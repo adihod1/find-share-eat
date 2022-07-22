@@ -1,7 +1,7 @@
 import actions from "../actions/constants";
 
 const initialState = {
-    active: true
+    active: false
 };
 
 const spinnerReducer = (state = initialState, action) => {
