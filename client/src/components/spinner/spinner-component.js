@@ -1,7 +1,6 @@
 import React from "react";
 import "./Spinner.scss";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faPen} from "@fortawesome/free-solid-svg-icons";
+import ChefHatIcon from "mdi-react/ChefHatIcon";
 import PropTypes from 'prop-types';
 
 
@@ -13,7 +12,9 @@ const Spinner = ({spinnerValue}) => {
     return (
         <div id="spinner" {...getSpinnerAttributes({spinnerValue})}>
             <div className="spinner-wrapper">
-                <span className="icon-add-todo"><FontAwesomeIcon icon={faPen}/></span>
+                <span className="icon-spinner">
+                    <ChefHatIcon className="icon-spinner" size="50"/>
+                </span>
             </div>
         </div>
     );
