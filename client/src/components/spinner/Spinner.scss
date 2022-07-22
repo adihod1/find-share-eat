@@ -1,0 +1,32 @@
+.spinner-wrapper {
+  position: relative;
+  top: 80%;
+}
+
+.spinner {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 999999;
+  background: #f675e5;
+  opacity: 0.45;
+}
+
+.hide-spinner {
+  display: none !important;
+}
+
+.icon-spinner {
+  position: absolute;
+  animation: spin-animation 3.5s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}
