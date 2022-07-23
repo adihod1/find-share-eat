@@ -10,6 +10,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
+    "@react-oauth/google": "^0.2.6",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -20,13 +21,15 @@
     "mdi-react": "^9.0.0",
     "@mdi/font": "^7.0.96",
     "bootstrap": "^5.2.0",
-    "react-bootstrap": "^2.4.0"
+    "react-bootstrap": "^2.4.0",
+    "jwt-decode": "^3.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "rebuild-npm": "rm -rf ./node_modules ; rm -rf package-lock.json ; npm i --legacy-peer-deps"
   },
   "eslintConfig": {
     "extends": [
