@@ -1,0 +1,34 @@
+@use "sass:map";
+
+$theme-colors: (
+        "theme": #4d0279,
+        "accent": rgb(245 201 224),
+        "success": #28a745,
+        "info": #17a2b8,
+        "warning": #ffc107,
+        "pink": #d22189db,
+        "lightpink": #ffa9df,
+        "darkpink": rgba(114, 14, 74, 0.86),
+);
+
+@each $key, $color in $theme-colors {
+  .color-#{$key} {
+    color: $color;
+  }
+  .bg-#{$key} {
+    background-color: $color;
+  }
+  .hover-bg-#{$key}:hover {
+    transition: background-color 0.3s linear;
+    background-color: $color;
+  }
+  .hover-color-#{$key}:hover {
+    transition: color 0.3s linear;
+    color: $color;
+  }
+}
+
+
+@function color($color) {
+  @return map.get($theme-colors, $color);
+}
