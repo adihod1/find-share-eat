@@ -1,0 +1,100 @@
+/* Pages background color */
+.background {
+    background-color: #BC2680;
+}
+
+/* All the buttons have the same background-color: #D35CA3  */
+.button {
+    background-color: #D35CA3;  
+}
+
+/* Buttons sizes and location*/
+.button.sign-in {
+    height: 65px;
+    width: 150px;
+    left: 609px;
+    top: -645px;
+    border-radius: 20px;
+    
+  
+}
+
+.button.sign-up {
+    height: 59px;
+    width: 739px;
+    left: -507px;
+    top: 545px;
+    border-radius: 20px;    
+}
+
+
+/* User Page */
+.button.share-recipe {
+    height: 72px;
+    width: 224px;
+    left: 639px;
+    top: -567px;
+    border-radius: 20px;
+
+}
+
+.button.Log-in {
+    height: 67px;
+    width: 838px;
+    left: -446px;
+    top: 67px;
+    border-radius: 20px;
+    background-color: #D35CA3;
+}
+
+.lizzie-image {
+    height: 624px;
+    width: 646px;
+    left: -1118px;
+    top: 148px;
+    border-radius: 0px;    
+}
+
+/* Height will probably change because it should be along the entire page */
+.side-bar {
+    height: 1285px; 
+    width: 449px;
+    left: -991px;
+    top: -562px;
+    border-radius: 0px;
+}
+
+.side-bar.options {
+    height: 34px; 
+    width: 303px;
+    left: -930px;
+    top: -241px;
+}
+
+/* When a visitor connects and sees the general recipes on the site. 
+Added the dimensions of the recipe component and the image inside it */
+
+.recipe-item {
+    height: 498px;
+    width: 537px;
+    left: -435px;
+    top: -341px;
+    border-radius: 0px;
+
+}
+
+.recipe-image-item {
+    height: 306px;
+    width: 537px;
+    left: 320px;
+    top: -348px;
+    border-radius: 0px;
+}
+/* WelcomePage: add this link to your file
+<link href='https://fonts.googleapis.com/css?family=Potta One' rel='stylesheet'> */
+.font {
+    font-family: 'Potta One';
+    font-size: 70px;
+    color: #ffffff;
+    align-items: center;
+}
