@@ -18,7 +18,9 @@
     "web-vitals": "^2.1.4",
     "sass": "^1.52.3",
     "mdi-react": "^9.0.0",
-    "@mdi/font": "^7.0.96"
+    "@mdi/font": "^7.0.96",
+    "bootstrap": "^5.2.0",
+    "react-bootstrap": "^2.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
