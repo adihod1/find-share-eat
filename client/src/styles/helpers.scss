@@ -1,0 +1,14 @@
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+.cursor-help {
+  cursor: help !important;
+}
+
+@for $i from 2 through 48 {
+  .font-size-#{$i} {
+    font-size: #{$i}px;
+  }
+}
+
