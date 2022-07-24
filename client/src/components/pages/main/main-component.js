@@ -1,13 +1,11 @@
 import React from "react";
-import Spinner from "../../spinner/spinner-connector";
-import Login from "../login/Login"
 import "./main.scss";
+import RecipesList from "../../recipes-list/RecipesList";
 
 function Main() {
     return (
         <div className="main">
-            <Spinner />
-            <Login />
+            <RecipesList />
         </div>
     );
 }
