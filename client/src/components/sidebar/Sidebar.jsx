@@ -1,12 +1,14 @@
 import React from 'react'
 import './sidebar.scss'
 import { Link } from 'react-router-dom';
-import { FaUser, FaBookmark, FaCloudsmith, FaSignOutAlt } from "react-icons/fa";
+import { FaUser, FaBookmark, FaCloudsmith, FaSignOutAlt } from "../../icons/index";
 
 function Sidebar() {
     return (
         <div class="container">
-            <p class='title'>Find Share Eat</p>
+            <Link to="/" class="link">
+                <p class='title'>Find Share Eat</p>
+            </Link>
             <Link to="/profile" class='link'>
                 <div class='nav-bar-item'>
                     <FaUser class="logo" />
