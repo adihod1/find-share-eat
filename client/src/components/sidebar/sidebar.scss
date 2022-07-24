@@ -1,0 +1,37 @@
+.container {
+    width: 20%;
+    height: 97%;
+    position: absolute;
+    margin: 10px;
+    background-color: #D35CA3;
+    padding-left: 10px;
+}
+
+.nav-bar-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px
+}
+
+.title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.nav-item-text {
+    color: white
+}
+
+.link {
+    text-decoration: none;
+}
+
+.logout {
+    cursor: pointer
+}
+
+.logo {
+    color: white
+}
