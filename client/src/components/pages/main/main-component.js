@@ -2,6 +2,7 @@ import React from "react";
 import Spinner from "../../spinner/spinner-connector";
 import Login from "../login/login-connector"
 import "./main.scss";
+import RecipesList from "../../recipes-list/RecipesList";
 
 
 function Main({userValue, isLoggedInValue, userLogoutAction}) {
@@ -19,6 +20,7 @@ function Main({userValue, isLoggedInValue, userLogoutAction}) {
     return (
         <div className="main">
             <Spinner/>
+            <RecipesList />
             <div>
                 {isLoggedInValue ? loginDetails() : <Login/>}
             </div>
