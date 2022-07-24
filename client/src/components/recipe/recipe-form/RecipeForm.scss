@@ -1,0 +1,21 @@
+.sideTitle {
+    height: 100%;
+    width: 302px;
+    background-color: #CB4495;
+}
+
+.img {
+    height: 640px;
+    width: 640px;
+    left: 294px;
+    top: -170px;
+    border-radius: 0px;
+
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
