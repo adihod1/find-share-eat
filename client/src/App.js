@@ -1,11 +1,13 @@
-import './App.scss';
-import Main from "./components/pages/main/main-component"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Main from './components/pages/main/main-component'
 
 function App() {
   return (
-      <div className="App">
-          <Main/>
-      </div>
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<Main />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
