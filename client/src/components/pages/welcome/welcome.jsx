@@ -8,6 +8,10 @@ import Login from "../login/login-connector";
 function Welcome({isModalOpenValue, openLoginModalAction}) {
     return (
         <div id='welcome-container'>
+            <div className="login-wrapper">
+                {isModalOpenValue ? <Login/> : ''}
+                <button onClick={() => openLoginModalAction(true)}>Login</button>
+            </div>
             <img src={Logo} className="logo-image"/>
             <div id="welcome-text">
                 <p>Hungry? Looking for something tasty to eat?</p>
@@ -15,13 +19,14 @@ function Welcome({isModalOpenValue, openLoginModalAction}) {
                 <p>Let the fun begin!</p>
             </div>
             <div id="footer">
-                <img src={Sharing} className="bottom-images"/>
-                <img src={Find} className="bottom-images"/>
-            </div>
-
-            <div className="login-wrapper">
-                {isModalOpenValue ? <Login/> : ''}
-                <button onClick={() => openLoginModalAction(true)}>Login</button>
+                <div>
+                    <img src={Sharing} className="bottom-images"/>
+                    <p>Find desired recipes</p>
+                </div>
+                <div>
+                    <img src={Find} className="bottom-images"/>
+                    <p>Share your own recipes</p>
+                </div>
             </div>
         </div>
     )

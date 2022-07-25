@@ -10,6 +10,7 @@ $theme-colors: (
         "button-pink": #D35CA3,
         "lightpink": #ffa9df,
         "darkpink": rgba(114, 14, 74, 0.86),
+        "text": #ffffff,
 );
 
 @each $key, $color in $theme-colors {
