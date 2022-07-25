@@ -21,6 +21,7 @@ export function userLogin(user) {
             console.log(response)
             dispatch({type: actions.USER_LOGIN, user: response.body})
         } catch (e) {
+            console.error(e);
             //todo dispatch type login error
         }
         spinner(dispatch, false)

@@ -20,17 +20,18 @@
   box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
 }
 
-.google-sign-in-button {
-  align-self: center;
-}
-
 .lizzie-wrapper {
   position: fixed;
   bottom: 0;
   left: 0;
 }
 
-.lizzie-image {
-  height: 500px;
-  width: 500px;
+.lizzie-icon {
+  height: 100px;
+  width: 100px;
+}
+
+.modal-logo {
+  width: 320px;
+  height: 80px;
 }
