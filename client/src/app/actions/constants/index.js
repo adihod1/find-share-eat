@@ -6,6 +6,8 @@ const actions = {
     // LOGOUT
     USER_LOGIN: "USER_LOGIN",
     USER_LOGOUT: "USER_LOGOUT",
+    OPEN_MODAL: "OPEN_MODAL",
+    CLOSE_MODAL: "CLOSE_MODAL",
 
 };
 

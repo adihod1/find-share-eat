@@ -5,28 +5,3 @@
   width: 100vw;
   background-color: color('background-pink');
 }
-
-.user-login-details {
-  border: 1px black;
-  width: 450px;
-  position: fixed;
-  left: 100px;
-}
-
-.user-login-details img {
-  border-radius: 30px;
-  width: 50px;
-  margin: 10px;
-}
-
-.user-login-details span {
-  color: whitesmoke;
-}
-
-.user-login-details button {
-  border-radius: 30px;
-  width: 100px;
-  margin: 10px;
-  color: whitesmoke;
-  background-color: color('button-pink');
-}
