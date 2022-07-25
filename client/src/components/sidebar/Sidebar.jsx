@@ -7,26 +7,26 @@ function Sidebar() {
     return (
         <div class="container">
             <p class='title'>Find Share Eat</p>
-            <Link to="/profile" class='link'>
+            <Link to="/profile" className='link'>
                 <div class='nav-bar-item'>
-                    <FaUser class="logo" />
+                    <FaUser className="logo" />
                     <p class="nav-item-text">Profile</p>
                 </div>
             </Link>
-            <Link to="/saved" class='link'>
+            <Link to="/saved" className='link'>
                 <div class='nav-bar-item'>
-                    <FaBookmark class="logo" />
+                    <FaBookmark className="logo" />
                     <p class="nav-item-text">Saved Recipes</p>
                 </div>
             </Link>
-            <Link to="/shared" class='link'>
+            <Link to="/shared" className='link'>
                 <div class='nav-bar-item'>
-                    <FaCloudsmith class="logo" />
+                    <FaCloudsmith className="logo" />
                     <p class="nav-item-text">Shared Recipes</p>
                 </div>
             </Link>
             <div class='nav-bar-item logout'>
-                <FaSignOutAlt class="logo" />
+                <FaSignOutAlt className="logo" />
                 <p class="nav-item-text">Logout</p>
             </div>
         </div>
