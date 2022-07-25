@@ -1,16 +1,74 @@
 .sideTitle {
     height: 100%;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
     width: 302px;
     background-color: #CB4495;
 }
 
-.img {
-    height: 640px;
-    width: 640px;
-    left: 294px;
-    top: -170px;
-    border-radius: 0px;
+// img {
+//     height: 640px;
+//     width: 640px;
+//     left: 294px;
+//     top: -170px;
+//     border-radius: 0px;
 
+// }
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cupcake-img {
+    display: flex;
+    align-items: center;
+}
+
+.cupcake-img img{
+    height: 400px;
+    width: 400px;
+    // left: 294px;
+    // top: -170px;
+    // border-radius: 0px;
+    margin-left: 330%;
+    margin-top: 50%;
+    display: inline-block;
+}
+
+body {
+    background-color: #BC2680;
+}
+
+.font {
+    font-family: 'Potta One';
+    font-size: 47px;
+    color: #ffffff;
+    align-items: center;
+}
+
+.logo-img{
+    height: 87px;
+    width: 290px;
+    margin-left: 8px;
+    margin-top: 19px;
+    border-radius: 0px;
+}
+
+h1 {
+    text-align:center;
+}
+
+.penguin-img {
+    height: 236px;
+    width: 193px;
+    margin-left: 54px;
+    top: 232px;
+    border-radius: 0px;
 }
 
 .app-container {
@@ -18,4 +76,5 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
