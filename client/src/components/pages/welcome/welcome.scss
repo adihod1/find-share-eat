@@ -28,6 +28,13 @@
   bottom: 50px
 }
 
-.login-wrapper {
-  height: 100px;
+.login-wrapper button {
+  height: 30px;
+  width: 85px;
+  position: fixed;
+  right: 40px;
+  top: 20px;
+  border-radius: 20px;
+  background-color: color('button-pink');
+  color: color('text');
 }
