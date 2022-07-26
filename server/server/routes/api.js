@@ -10,4 +10,8 @@ router.get("/recipes", async (_, res) => {
   res.status(200).json(await new itemManager().createRecipe());
 });
 
+router.get("/ingredients", async (_, res) => {
+  res.status(200).json(await new itemManager().createIngredients());
+});
+
 module.exports = router;

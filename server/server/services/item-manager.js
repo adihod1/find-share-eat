@@ -1,4 +1,5 @@
-const { User, Recipe } = require("../db/models");
+const { User, Recipe, Ingredient } = require("../db/models");
+// const ingredient = require("../db/models/ingredient");
 
 class itemManager {
   createItems = async () => {
@@ -26,11 +27,20 @@ class itemManager {
   };
 
   createRecipe = async () => {
-    recipe.create({
+    Recipe.create({
       recipeName: "cake",
       description: "cake",
       cookingTime: "1:00",
       instructions: "buy cake",
+    });
+  };
+
+  createIngredients = async () => {
+    Ingredient.create({
+      ingredientName: "sugar",
+      amount: 300,
+      measurement: "1 cup",
+      recipeId: "1",
     });
   };
 }
