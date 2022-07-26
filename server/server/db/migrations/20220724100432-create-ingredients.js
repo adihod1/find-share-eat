@@ -17,6 +17,9 @@ module.exports = {
       measurement: {
         type: Sequelize.STRING,
       },
+      recipeId: {
+        type: Sequelize.INTEGER,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

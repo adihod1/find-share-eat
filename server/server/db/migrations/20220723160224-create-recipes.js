@@ -26,6 +26,9 @@ module.exports = {
       cookingTime: {
         type: Sequelize.TIME,
       },
+      categoryId: {
+        type: Sequelize.INTEGER,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

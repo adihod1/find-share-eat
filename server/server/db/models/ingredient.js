@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       ingredientName: DataTypes.STRING,
       amount: DataTypes.INTEGER,
       measurement: DataTypes.STRING,
+      recipeId: DataTypes.INTEGER,
     },
     {
       sequelize,

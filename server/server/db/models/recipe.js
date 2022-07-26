@@ -11,6 +11,8 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       console.log(models);
       Recipe.belongsToMany(models.User, { through: "UsersRecipes" });
+      Recipe.hasMany(models.Ingredient);
+      models.Ingredient.belongsTo(Recipe);
     }
   }
   Recipe.init(
@@ -21,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
       instructions: DataTypes.STRING,
       image: DataTypes.STRING,
       cookingTime: DataTypes.TIME,
+      categoryId: DataTypes.INTEGER,
     },
     {
       sequelize,
