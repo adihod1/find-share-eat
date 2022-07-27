@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 import { addCooktime } from "../../../redux/actions/forms";
 
-export default function TimePicker({ editMode, recipe }) {
+export default function ChooseTime({ editMode, recipe }) {
   const dispatch = useDispatch();
 
   let defaultCookTime;

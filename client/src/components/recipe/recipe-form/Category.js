@@ -33,18 +33,18 @@ function classNames(...classes) {
 }
 
 export default function Category({ editMode, recipe }) {
-  const [selectedcategories, setSelectedcategories] = useState(
+  const [selectCategory, setSelectCategory] = useState(
     editMode ? recipe[0].category.name : categories[0].title
   );
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(addCategory(selectedcategories));
-  }, [selectedcategories]);
+    dispatch(addCategory(selectCategory));
+  }, [selectCategory]);
 
   return (
-    <RadioGroup value={selectedcategories} onChange={setSelectedcategories}>
+    <RadioGroup value={selectCategory} onChange={setSelectCategory}>
       <RadioGroup.Label className="text-lg leading-6 font-medium text-gray-900">
         Select a food category
       </RadioGroup.Label>
