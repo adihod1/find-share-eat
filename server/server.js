@@ -1,9 +1,11 @@
-const dotenv = require("dotenv");
-const express = require("express");
-const errorHandler = require("./server/middleware/error-handling");
-const cors = require("./server/middleware/cors");
-const logger = require("./server/middleware/logger");
-const todosRouter = require("./server/routes/api");
+
+const dotenv = require('dotenv');
+const express = require('express');
+const errorHandler = require('./server/middleware/error-handling');
+const cors = require('./server/middleware/cors');
+const logger = require('./server/middleware/logger');
+const ApiRouter = require('./server/routes/api');
+const AuthRouter = require('./server/routes/auth');
 
 dotenv.config();
 
@@ -13,7 +15,10 @@ const app = express();
 
 app.use([errorHandler, logger, cors, express.json()]);
 
-app.use("/api", todosRouter);
+
+app.use('/api', ApiRouter);
+app.use('/auth', AuthRouter);
+
 
 process.on("unhandledRejection", (reason, promise) => {
   // console.log("Unhandled Rejection", reason.message);
