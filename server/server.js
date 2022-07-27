@@ -4,7 +4,6 @@ const errorHandler = require("./server/middleware/error-handling");
 const cors = require("./server/middleware/cors");
 const logger = require("./server/middleware/logger");
 const todosRouter = require("./server/routes/api");
-const { Users, Recipes } = require("./server/db/models");
 
 dotenv.config();
 
