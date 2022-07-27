@@ -6,15 +6,16 @@ import RecipeForm from "./components/recipe/recipe-form/RecipeForm";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Sidebar />
-      <Routes>
-        <Route index element={<Main />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/saved" element={<Main />} />
-        <Route path="/shared" element={<Main />} />
-      </Routes>
-    </BrowserRouter>
+    // <BrowserRouter>
+    //   <Sidebar />
+    //   <Routes>
+    //     <Route index element={<Main />} />
+    //     <Route path="/profile" element={<Profile />} />
+    //     <Route path="/saved" element={<Main />} />
+    //     <Route path="/shared" element={<Main />} />
+    //   </Routes>
+    // </BrowserRouter>
+    <RecipeForm />
   );
 }
 

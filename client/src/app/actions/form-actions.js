@@ -4,7 +4,7 @@ import {
   ADD_INGREDIENTS,
   ADD_PICTURE,
   ADD_PROCEDURES,
-} from "./index";
+} from "./constants/index";
 
 export const addIngredients = (ingredients) => {
   return {

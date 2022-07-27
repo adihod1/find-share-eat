@@ -67,6 +67,15 @@ export default function RecipeForm() {
       <div className="cupcake-img">
         <img src={cupcakeIcon} alt="cupcake" />
       </div>
+      <option key="hey" value="hey">
+        hey
+      </option>
+      <option key="hey" value="hey">
+        hey
+      </option>
+      <option key="hey" value="hey">
+        hey
+      </option>
     </div>
   );
 }

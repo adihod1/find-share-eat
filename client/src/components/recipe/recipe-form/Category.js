@@ -32,7 +32,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Category({ editMode, recipe }) {
+export default function Category({ editMode, recipe, addCategory }) {
   const [selectCategory, setSelectCategory] = useState(
     editMode ? recipe[0].category.name : categories[0].title
   );
