@@ -1,7 +1,5 @@
 "use strict";
 
-const { json } = require("sequelize/types");
-
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert(
@@ -57,11 +55,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+    await queryInterface.bulkDelete("Recipes", null, {});
   },
 };

@@ -41,14 +41,14 @@ module.exports = {
           ingredientName: "lemon zest",
           amount: 1,
           measurement: "",
-          recipeId: 2,
+          recipeId: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           ingredientName: "vanilla",
           amount: 1,
-          measurement: teaspoon,
+          measurement: "teaspoon",
           recipeId: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -136,7 +136,7 @@ module.exports = {
         {
           ingredientName: "vanilla",
           amount: 1,
-          measurement: teaspoon,
+          measurement: "teaspoon",
           recipeId: 2,
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -192,7 +192,7 @@ module.exports = {
         {
           ingredientName: "flour",
           amount: 500,
-          measurement: grams,
+          measurement: "grams",
           recipeId: 3,
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -328,7 +328,7 @@ module.exports = {
         {
           ingredientName: "vanilla",
           amount: 1,
-          measurement: teaspoon,
+          measurement: "teaspoon",
           recipeId: 4,
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -347,11 +347,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+    await queryInterface.bulkDelete("Ingredients", null, {});
   },
 };
