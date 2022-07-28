@@ -1,5 +1,6 @@
 import {
   ADD_CATEGORY,
+  GET_CATEGORIES,
   ADD_COOKTIME,
   ADD_INGREDIENTS,
   ADD_PICTURE,
@@ -10,6 +11,7 @@ const initialState = {
   ingredients: [],
   procedures: [],
   cook_time: "",
+  categoriesList: [],
   category: "",
   picture: [],
 };
@@ -35,6 +37,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         category: action.ADD_CATEGORY,
+      };
+    case GET_CATEGORY:
+      return {
+        ...state,
+        categoriesList: action.GET_CATEGORIES,
       };
     case ADD_PICTURE:
       return {

@@ -20,7 +20,7 @@ export default function RecipeForm() {
       </div>
       <form className="app-container" onSubmit={handleFormSubmit}>
         <div className="shadow sm:rounded-md sm:overflow-hidden">
-          <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
+          <div className="contain">
             <div>
               <h1 className="title">Title</h1>
               <input
@@ -47,7 +47,7 @@ export default function RecipeForm() {
                 />
               </div>
             </div>
-            {/* <Category editMode={props.editMode} recipe={props.recipe} /> */}
+            {/* <Category /> */}
             {/* <Ingredients editMode={props.editMode} recipe={props.recipe} /> */}
             {/* <Procedure editMode={props.editMode} recipe={props.recipe} /> */}
             {/* <TimePicker editMode={props.editMode} recipe={props.recipe} /> */}

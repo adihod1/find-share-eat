@@ -6,6 +6,10 @@ router.get("/items", async (_, res) => {
   res.status(200).json(await new itemManager().createItems());
 });
 
+router.get("/categories", async (_, res) => {
+  res.status(200).json(await new itemManager().getCategories());
+});
+
 router.get("/recipes", async (_, res) => {
   res.status(200).json(await new itemManager().createRecipe());
 });

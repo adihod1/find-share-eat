@@ -1,4 +1,4 @@
-const { User, Recipe, Ingredient } = require("../db/models");
+const { User, Recipe, Ingredient, Category } = require("../db/models");
 
 class itemManager {
   // createItems = async () => {
@@ -39,6 +39,17 @@ class itemManager {
   //     recipeId: "1",
   //   });
   // };
+  getCategories = async () => {
+    const categories = await Category.findAll({
+      raw: true,
+    });
+    return categories.map((category) => {
+      return {
+        id: category.id,
+        categoryName: category.categoryName,
+      };
+    });
+  };
 }
 
 module.exports = itemManager;
