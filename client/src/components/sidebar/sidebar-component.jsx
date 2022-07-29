@@ -34,7 +34,7 @@ function Sidebar({ userValue, userLogoutAction }) {
                         <p className="nav-item-text">Shared Recipes</p>
                     </div>
                 </Link>
-                <Link to="/welcome" className='link'>
+                <Link to="/" className='link'>
                     <div className='nav-bar-item logout' onClick={userLogoutAction}>
                         <FaSignOutAlt className="logo" />
                         <p className="nav-item-text">Logout</p>

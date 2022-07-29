@@ -13,20 +13,25 @@ function Main({ isLoggedInValue, openLoginModalAction, isModalOpenValue }) {
     return (
         <div className="main">
             <Spinner />
-            <div>
-                {isLoggedInValue ? <div className={'route-container'}>
-                    < BrowserRouter >
-                        <Sidebar />
+            <div className={'route-container'}>
+                < BrowserRouter >
+                    {isLoggedInValue ?
+                        <>
+                            <Sidebar />
+                            <Routes>
+                                <Route path="/" element={<Home />} />
+                                <Route path="/profile" element={<Profile />} />
+                                <Route path="/saved" element={<Profile />} />
+                                <Route path="/shared" element={<Profile />} />
+                            </Routes>
+                        </>
+                        :
                         <Routes>
-                            <Route path="/" element={<Home />} />
-                            <Route path="/profile" element={<Profile />} />
-                            <Route path="/saved" element={<Profile />} />
-                            <Route path="/shared" element={<Profile />} />
-                        </Routes>
-                    </BrowserRouter >
-                </div > : <Welcome />}
-            </div>
-        </div>
+                            <Route path="/" element={<Welcome />} />
+                        </Routes>}
+                </BrowserRouter >
+            </div >
+        </div >
     );
 }
 
