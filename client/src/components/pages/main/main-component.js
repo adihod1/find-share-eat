@@ -14,7 +14,7 @@ function Main({ isLoggedInValue, openLoginModalAction, isModalOpenValue }) {
         <div className="main">
             <Spinner />
             <div>
-                {isLoggedInValue ? <div>
+                {isLoggedInValue ? <div className={'route-container'}>
                     < BrowserRouter >
                         <Sidebar />
                         <Routes>

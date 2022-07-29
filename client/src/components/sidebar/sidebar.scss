@@ -69,6 +69,12 @@
   cursor: pointer;
 }
 
+.side-bar-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .sidebar-items {
   margin: 30px;
 }
