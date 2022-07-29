@@ -7,9 +7,9 @@ import findShareEatLogo from "../../images/findShareEatLogo.png";
 function Sidebar({ userValue, userLogoutAction }) {
     return (
         <div className="sidebar-container">
-            <div className="side-bar-logo">
+            <Link to="/" className="side-bar-logo">
                 <img src={findShareEatLogo} />
-            </div>
+            </Link>
             {userValue && <div className="user-login-details">
                 <img alt="" src={userValue.picture} />
                 <span>Hello {userValue.name} / {userValue.email}</span>
