@@ -8,21 +8,21 @@ const initialState = {
 
 const loginReducer = (state = initialState, action) => {
     switch (action.type) {
-        case actions.USER_LOGOUT : {
-            return {isLoggedIn: false, user: null};
+        case actions.USER_LOGOUT: {
+            return { isLoggedIn: false, user: null };
         }
 
-        case actions.USER_LOGIN : {
+        case actions.USER_LOGIN: {
             console.log(action.user)
-            return {isLoggedIn: true, user: action.user};
+            return { isLoggedIn: true, user: action.user };
         }
 
-        case actions.OPEN_MODAL : {
-            return {isModalOpen: true};
+        case actions.OPEN_MODAL: {
+            return { isModalOpen: true };
         }
 
-        case actions.CLOSE_MODAL : {
-            return {isModalOpen: false};
+        case actions.CLOSE_MODAL: {
+            return { isModalOpen: false };
         }
 
         default:

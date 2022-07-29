@@ -9,6 +9,9 @@ const actions = {
     OPEN_MODAL: "OPEN_MODAL",
     CLOSE_MODAL: "CLOSE_MODAL",
 
+    // RECIPE
+    FETCHED_RECIPES: "FETCHED_RECIPES",
+
 };
 
 export default actions;
