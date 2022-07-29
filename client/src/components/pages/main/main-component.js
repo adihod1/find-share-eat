@@ -9,33 +9,22 @@ import Welcome from "../welcome/welcome-connector";
 
 
 function Main({ isLoggedInValue, openLoginModalAction, isModalOpenValue }) {
-    const AppRouter = () => {
-        return (
-            <div>
-                <BrowserRouter>
-                    <Sidebar />
-                    <Routes>
-                        <Route path="/home" element={<Home />} />
-                        <Route path="/profile" element={<Profile />} />
-                        <Route path="/saved" element={<Profile />} />
-                        <Route path="/shared" element={<Profile />} />
-                    </Routes>
-                </BrowserRouter>
-            </div>
-        )
-    }
-
-    const welcomePage = () => {
-        return (
-            <Welcome />
-        )
-    }
 
     return (
         <div className="main">
             <Spinner />
             <div>
-                {isLoggedInValue ? AppRouter() : welcomePage()}
+                {isLoggedInValue ? <div>
+                    < BrowserRouter >
+                        <Sidebar />
+                        <Routes>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/profile" element={<Profile />} />
+                            <Route path="/saved" element={<Profile />} />
+                            <Route path="/shared" element={<Profile />} />
+                        </Routes>
+                    </BrowserRouter >
+                </div > : <Welcome />}
             </div>
         </div>
     );
