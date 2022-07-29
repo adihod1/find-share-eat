@@ -1,27 +1,25 @@
 import React from "react";
 import "./main.scss";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Profile from "../profile/Profile";
 import Home from "../home/home-connector";
 import Sidebar from "../../sidebar/sidebar-connector";
 import Spinner from "../../spinner/spinner-connector";
-import RecipesList from "../../recipes-list/RecipesList";
 import Welcome from "../welcome/welcome-connector";
 
 
-function Main({isLoggedInValue, openLoginModalAction, isModalOpenValue}) {
+function Main({ isLoggedInValue, openLoginModalAction, isModalOpenValue }) {
     const AppRouter = () => {
         return (
             <div>
                 <BrowserRouter>
-                    <Sidebar/>
+                    <Sidebar />
                     <Routes>
-                        <Route path="/home" element={<Home/>}/>
-                        <Route path="/profile" element={<Profile/>}/>
-                        <Route path="/saved" element={<Profile/>}/>
-                        <Route path="/shared" element={<Profile/>}/>
+                        <Route path="/home" element={<Home />} />
+                        <Route path="/profile" element={<Profile />} />
+                        <Route path="/saved" element={<Profile />} />
+                        <Route path="/shared" element={<Profile />} />
                     </Routes>
-                    <RecipesList/>
                 </BrowserRouter>
             </div>
         )
@@ -29,13 +27,13 @@ function Main({isLoggedInValue, openLoginModalAction, isModalOpenValue}) {
 
     const welcomePage = () => {
         return (
-            <Welcome/>
+            <Welcome />
         )
     }
 
     return (
         <div className="main">
-            <Spinner/>
+            <Spinner />
             <div>
                 {isLoggedInValue ? AppRouter() : welcomePage()}
             </div>

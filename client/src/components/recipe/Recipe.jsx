@@ -1,16 +1,23 @@
 import React from 'react'
+import './recipe.scss'
+import clockIcon from '../../images/timeIcon.png'
+import FavoriteIcon from '../../images/saveToProfileIcon.png'
+import likeIcon from '../../images/likeIcon.png'
 
-function Recipe() {
+
+function Recipe({ image, description, time }) {
     return (
-        <div>
-            <img id="recipe-image" alt="recipe"></img>
-            <p id="recipe-dexcription"></p>
-            <span id="recipe-bottom-tab">
-                <img id="time icon" alt="clock"></img>
-                <p id="time"></p>
-                <img id="favorite-icon" alt="favorite"></img>
-                <img id="like-icon" alt="like"></img>
-            </span>
+        <div className={"recipe-container"}>
+            <img className="recipe-image" alt="recipe" src={image}></img>
+            <p className="recipe-dexcription">{description}</p>
+            <div className={"recipe-bottom-tab"}>
+                <div className={"time-container"}>
+                    <img className="icon" alt="clock" src={clockIcon}></img>
+                    {time}
+                </div>
+                <img className="icon" alt="favorite" src={FavoriteIcon}></img>
+                <img className="icon" alt="like" src={likeIcon}></img>
+            </div>
         </div>
     )
 }
