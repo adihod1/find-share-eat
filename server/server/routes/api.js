@@ -6,7 +6,7 @@ router.post("/add-user", async (req, res) => {
   res.status(200).json(await new itemManager().addUser(req.body));
 });
 
-router.post("/add-recipe", async (_, res) => {
+router.post("/add-recipe", async (req, res) => {
   res
     .status(200)
     .json(await new itemManager().addRecipe(req.body.id, req.body));
@@ -30,13 +30,13 @@ router.get("/recipes-by-category", async (_, res) => {
     .json(await new itemManager().getRecipeByCategory(req.body.category));
 });
 
-router.get("/recipes-by-ingredient", async (_, res) => {
+router.get("/recipes-by-ingredients", async (req, res) => {
   res
     .status(200)
-    .json(await new itemManager().getRecipeByIngredients(["salt", "sugar"]));
+    .json(await new itemManager().getRecipeByIngredients(req.body.ingredients));
 });
 
-router.get("/recipes-by-name", async (_, res) => {
+router.get("/recipes-by-name", async (req, res) => {
   res
     .status(200)
     .json(await new itemManager().getRecipeByName(req.body.CategoryName));
@@ -50,21 +50,11 @@ router.get("/get-categories", async (_, res) => {
   res.status(200).json(await new itemManager().getCategories());
 });
 
-router.get("/ingredients", async (_, res) => {
-  res.status(200).json(await new itemManager().createIngredients());
-});
-
 router.put("/edit-recipe", async (req, res) => {
   res
     .status(200)
     .json(await new itemManager().editRecipe(req.body.id, req.body));
 });
-
-// router.put("/edit-ingredient", async (req, res) => {
-//   res
-//     .status(200)
-//     .json(await new itemManager().editIngredient(req.body.id, req.body));
-// });
 
 router.delete("/delete-recipe", async (req, res) => {
   res.status(200).json(await new itemManager().deleteRecipe(req.body.id));

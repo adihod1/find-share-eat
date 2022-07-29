@@ -11,19 +11,22 @@ const Op = require("Sequelize").Op;
 
 class itemManager {
   addRecipe = async (id, options) => {
+    console.log(id);
     const values = this._sanitizeRecipe(options.recipe);
-    await Recipe.create(
+    const recipe = await Recipe.create(
       {
         ...values,
         Ingredients: options.ingredients,
-        Users: [{ userId: id }],
       },
       {
-        include: [Ingredient, User],
+        include: [Ingredient],
       }
     );
+    const userRow = await User.findByPk(id);
+    recipe.addUser(userRow, { through: UsersRecipes });
   };
 
+  // EXAMPLE FOR REQ.BODY:
   // {userId: integer
   //   recipe: {}
   //   ingredients: [{}]
@@ -93,17 +96,11 @@ class itemManager {
     return recipe;
   };
 
-  getRecipeByIngredients = async (ingredient) => {
-    const recipe = await Recipe.findAll({
-      include: [{ model: Ingredient, include: { model: Ingredient } }],
-      where: { ingredientName: ingredient },
-    });
-    return recipe;
-  };
-
-  getRecipeByRecipeName = async (ingredients) => {
+  getRecipeByIngredients = async (ingredients) => {
+    console.log(ingredients);
     const ingredientsAll = ingredients.map((ingredient) => {
-      return { ingredientName: ingredient };
+      console.log(ingredient);
+      return { ingredientName: ingredient.ingredientName };
     });
     const recipe = await Ingredient.findAll({
       include: [{ model: Recipe, include: { model: Ingredient } }],
@@ -151,19 +148,16 @@ class itemManager {
   };
 
   editRecipe = async (id, options) => {
-    // const existsValues = [];
-    // values.map(value => {if value existsValues.push(value)})
-    // console.log("recipe keys", Recipe.Recipe);
     const values = this._sanitizeRecipe(options);
     await Recipe.update({ ...values }, { where: { id: id } });
   };
 
-  editIngredient = async (id, option) => {
-    await Ingredient.update(
-      { ingredientName: "flower" },
-      { where: { id: id } }
-    );
-  };
+  // editIngredient = async (id, option) => {
+  //   await Ingredient.update(
+  //     { ingredientName: "flower" },
+  //     { where: { id: id } }
+  //   );
+  // };
 
   deleteRecipe = async (id) => {
     try {
