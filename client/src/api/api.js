@@ -8,12 +8,12 @@ export default class ApiBase {
         };
     }
 
-    _get(path) {
+    async _get(path) {
         const options = {
             method: 'GET',
             headers: this._HEADERS
         }
-        return this._response(this._API_BASE + path, options)
+        return await this._response(this._API_BASE + path, options)
     }
 
     _post(path, body) {

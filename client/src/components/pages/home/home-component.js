@@ -1,6 +1,6 @@
 import "./home.scss";
 import React from "react";
-import RecipesList from '../../recipes-list/RecipesList'
+import RecipesList from '../../recipes-list/recipe-list-connector'
 
 function Home() {
 
