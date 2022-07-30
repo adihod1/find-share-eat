@@ -33,9 +33,10 @@ router.get("/get-recipe-by-user-id/:userId", userIdValidator, async (req, res, n
 
 router.get("/get-recipes-by-ingredients", async (req, res, next) => {
     errWrapper(async () => {
-        res.status(200).json(await recipeManager.getRecipeByIngredients(req.body.ingredients));
+        console.log(req.query.ingredients)
+        const ingredients = _parseIngredientsQuery(req.query.ingredients.split(','))
+        res.status(200).json(await recipeManager.getRecipeByIngredients(ingredients));
     }, next);
-
 });
 
 router.get("/get-chosen-recipe/:recipeId", recipeIdValidator, async (req, res, next) => {
@@ -69,5 +70,9 @@ router.delete("/delete-recipe/:recipeId", recipeIdValidator, async (req, res, ne
         res.status(200).json(await recipeManager.deleteRecipe(req.params.recipeId));
     }, next);
 });
+
+function _parseIngredientsQuery(query) {
+    return query.map(ingredientName => ({ingredientName}))
+}
 
 module.exports = router;

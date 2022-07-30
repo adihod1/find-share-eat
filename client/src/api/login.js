@@ -1,6 +1,6 @@
 import ApiBase from "./api";
 
-export default class LoginClient extends ApiBase {
+export default class Login extends ApiBase {
     constructor() {
         super('http://localhost:3001/auth')
     }

@@ -1,10 +1,10 @@
 import actions from "../actions/constants";
 import {googleLogout} from '@react-oauth/google';
-import LoginClient from "../../api/login-client";
+import Login from "../../api/login";
 import {spinner} from "../actions/spinner-actions";
 import {objectToLoginSchema} from "../../utils/schemas/login-schema";
 
-const loginClient = new LoginClient()
+const loginClient = new Login()
 
 export function userLogout() {
     return async function userLogoutThunk(dispatch, getState) {

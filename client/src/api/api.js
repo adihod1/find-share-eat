@@ -27,6 +27,28 @@ export default class ApiBase {
         return await this._response(this._API_BASE + path, options)
     }
 
+    async _put(path, body) {
+        const options = {
+            method: 'PUT',
+            headers: this._HEADERS
+        }
+        if (body) {
+            options.body = body
+        }
+        return await this._response(this._API_BASE + path, options)
+    }
+
+    async _delete(path, body) {
+        const options = {
+            method: 'DELETE',
+            headers: this._HEADERS
+        }
+        if (body) {
+            options.body = body
+        }
+        return await this._response(this._API_BASE + path, options)
+    }
+
     async _response(url, options) {
         try {
             const res = await fetch(url, options)
