@@ -19,7 +19,7 @@ function Main({ isLoggedInValue, openLoginModalAction, isModalOpenValue }) {
             <Route path="/home" element={<Home />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/saved" element={<Profile />} />
-            <Route path="/shared" element={<Profile />} />
+            <Route path="/shared" element={<RecipeForm />} />
             <Route path="/addrecipe" element={<RecipeForm />} />
           </Routes>
         </BrowserRouter>

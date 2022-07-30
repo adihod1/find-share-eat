@@ -1,14 +1,33 @@
 import cupcakeIcon from "../../../images/cupcakeIcon.png";
+import { useCallback, useState } from "react";
 import findShareEatLogo from "../../../images/findShareEatLogo.png";
 import penguinIcon from "../../../images/penguinIcon.png";
-// import Category from "./Category";
+import ChooseTime from "./ChooseTime";
+import Ingredients from "./Ingredients";
+import Category from "./Category";
+import Procedure from "./Instructions";
 
 import "./RecipeForm.scss";
 
-export default function RecipeForm() {
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-  };
+export default function RecipeForm({ addRecipeAction, getUser }) {
+  const [inputValue, setInputValue] = useState("");
+  // const handleFormSubmit = (e) => {
+  //   e.preventDefault();
+
+  // };
+  // recipe: inputValue, ingredients: [{"h"}]
+  const id = "";
+
+  // const handleGetUser = useCallback(async () => {
+  //   console.log("user");
+  //   await getUser();
+  // }, [getuser]);
+
+  const handleFormSubmit = useCallback(async () => {
+    await addRecipeAction(id, { recipe: inputValue, ingredients: ["h"] });
+    setInputValue("");
+  }, [addRecipeAction, inputValue]);
+
   return (
     <div className="app-container">
       <div className="sideTitle">
@@ -19,7 +38,7 @@ export default function RecipeForm() {
         <img className="penguin-img" src={penguinIcon} alt="logo" />
       </div>
       <form className="app-container" onSubmit={handleFormSubmit}>
-        <div className="shadow sm:rounded-md sm:overflow-hidden">
+        <div>
           <div className="contain">
             <div>
               <h1 className="title">Title</h1>
@@ -47,19 +66,14 @@ export default function RecipeForm() {
                 />
               </div>
             </div>
-            {/* <Category /> */}
-            {/* <Ingredients editMode={props.editMode} recipe={props.recipe} /> */}
-            {/* <Procedure editMode={props.editMode} recipe={props.recipe} /> */}
-            {/* <TimePicker editMode={props.editMode} recipe={props.recipe} /> */}
+            <Category />
+            <Ingredients />
+            <Procedure />
+            <ChooseTime />
             {/* <PictureUpload />  */}
           </div>
-          <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
-            <button
-              type="submit"
-              className="w-full bg-teal-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-cyan-500"
-            >
-              {/* {props.buttonLabel} */}
-            </button>
+          <div>
+            <button type="submit">{/* {props.buttonLabel} */}</button>
           </div>
         </div>
       </form>
@@ -67,15 +81,6 @@ export default function RecipeForm() {
       <div className="cupcake-img">
         <img src={cupcakeIcon} alt="cupcake" />
       </div>
-      <option key="hey" value="hey">
-        hey
-      </option>
-      <option key="hey" value="hey">
-        hey
-      </option>
-      <option key="hey" value="hey">
-        hey
-      </option>
     </div>
   );
 }

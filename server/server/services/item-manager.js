@@ -39,16 +39,19 @@ class itemManager {
   //     recipeId: "1",
   //   });
   // };
+  // getCategories = async () => {
+  //   const categories = await Category.findAll({
+  //     raw: true,
+  //   });
+  //   return categories.map((category) => {
+  //     return {
+  //       id: category.id,
+  //       categoryName: category.categoryName,
+  //     };
+  //   });
+  // };
   getCategories = async () => {
-    const categories = await Category.findAll({
-      raw: true,
-    });
-    return categories.map((category) => {
-      return {
-        id: category.id,
-        categoryName: category.categoryName,
-      };
-    });
+    return await Category.findAll();
   };
 }
 

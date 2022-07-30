@@ -1,12 +1,6 @@
 import CategoriesApiService from "../../api/categories-client";
-// import {
-//   ADD_CATEGORY,
-//   GET_CATEGORY,
-//   ADD_COOKTIME,
-//   ADD_INGREDIENTS,
-//   ADD_PICTURE,
-//   ADD_PROCEDURES,
-// } from "./constants/index";
+import { recipeCategory } from "../middlewares/form-middleware";
+
 import actions from "./constants";
 
 export const addIngredients = (ingredients) => {
@@ -33,9 +27,10 @@ export const addCategory = (category) => {
   };
 };
 
-export const getCategories = (category) => {
-  return {
-    type: actions.GET_CATEGORIES,
+export const getCategories = (categories) => {
+  return (dispatch) => {
+    const getCategories = recipeCategory(categories);
+    dispatch(getCategories);
   };
 };
 
@@ -45,9 +40,11 @@ export const addPicture = (picture) => {
   };
 };
 
-export const loadCategoriesListAction = () => {
-  return async (dispatch) => {
-    const response = await CategoriesApiService.getCategories();
-    dispatch(getCategories(response));
-  };
-};
+// export const loadCategoriesListAction = () => {
+//   console.log("api");
+//   return async (dispatch) => {
+//     const response = await CategoriesApiService.getCategories(categories);
+//     console.log("ccaatteegories", response);
+//     dispatch(getCategories(response));
+//   };
+// };
