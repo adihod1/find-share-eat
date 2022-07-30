@@ -104,4 +104,4 @@ dist
 .tern-port
 
 # google cloud key
-.google-cloud-key.json
+.google-cloud-key
