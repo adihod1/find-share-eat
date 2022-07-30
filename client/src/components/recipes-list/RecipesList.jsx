@@ -47,7 +47,7 @@ const RecipesList = ({ fetchRecipesAction, recipesValue }) => {
                     <Row>
                         {recipesValue.length && recipesValue.map((recipe, index) => {
                             return (
-                                <Col key={recipe.image + recipe.description} md="12" lg="6" xl="3">
+                                <Col key={recipe.image + recipe.description}>
                                     <Recipe baseUrl={BUCKET_URL} openModal={setChosenRecipe} recipe={recipe} />
                                 </Col>
                             )

@@ -6,7 +6,7 @@ export default class RecipeClient extends ApiBase {
     }
 
     async fetchRecipes() {
-        const re = await this._get('/recipes-all')
+        const re = await this._get('/recipe/get-all-recipes')
         return re
     }
 

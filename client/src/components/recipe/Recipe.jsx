@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import './recipe.scss'
 import clockIcon from '../../images/timeIcon.png'
 import FavoriteIcon from '../../images/saveToProfileIcon.png'
@@ -15,8 +15,10 @@ function Recipe({ recipe, openModal, baseUrl }) {
                     <img className="icon" alt="clock" src={clockIcon}></img>
                     {recipe.cookingTime}
                 </div>
-                <img className="icon" alt="favorite" src={FavoriteIcon}></img>
-                <img className="icon" alt="like" src={likeIcon}></img>
+                <div className={'recipe-buttons-container'}>
+                    <img className="icon" alt="favorite" src={FavoriteIcon}></img>
+                    <img className="icon" alt="like" src={likeIcon}></img>
+                </div>
             </div>
         </div>
     )
