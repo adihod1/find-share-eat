@@ -21,7 +21,7 @@ const loginValidator = validateSchema({
         errorMessage: `Missing/Bad user.email`,
         in: ['body']
     },
-    'user.picture': {
+    'user.password': {
         isString: true,
         optional: true,
         errorMessage: `Bad user.picture`,
