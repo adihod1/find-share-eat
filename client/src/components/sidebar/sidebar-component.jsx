@@ -10,10 +10,10 @@ function Sidebar({ userValue, userLogoutAction }) {
             <Link to="/" className="side-bar-logo">
                 <img src={findShareEatLogo} />
             </Link>
-            {/* {userValue && <div className="user-login-details">
+            {userValue && <div className="user-login-details">
                 <img alt="" src={userValue.picture} />
                 <span>Hello {userValue.name} / {userValue.email}</span>
-            </div>} */}
+            </div>}
             <div className="sidebar-items">
                 <Link to="/profile" className='link'>
                     <div className='nav-bar-item'>
@@ -21,13 +21,13 @@ function Sidebar({ userValue, userLogoutAction }) {
                         <p className="nav-item-text">Profile</p>
                     </div>
                 </Link>
-                <Link to="/saved" className='link'>
+                <Link to="/" className='link'>
                     <div className='nav-bar-item'>
                         <FaBookmark className="logo" />
                         <p className="nav-item-text">Saved Recipes</p>
                     </div>
                 </Link>
-                <Link to="/shared" className='link'>
+                <Link to="/" className='link'>
                     <div className='nav-bar-item'>
                         <FaCloudsmith className="logo" />
                         <p className="nav-item-text">Shared Recipes</p>
