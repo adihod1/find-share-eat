@@ -16,7 +16,7 @@ export default class ApiBase {
         return await this._response(this._API_BASE + path, options)
     }
 
-    _post(path, body) {
+    async _post(path, body) {
         const options = {
             method: 'POST',
             headers: this._HEADERS
@@ -24,7 +24,7 @@ export default class ApiBase {
         if (body) {
             options.body = body
         }
-        return this._response(this._API_BASE + path, options)
+        return await this._response(this._API_BASE + path, options)
     }
 
     async _response(url, options) {
