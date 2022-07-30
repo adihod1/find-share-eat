@@ -4,7 +4,6 @@ import Logo from '../../../images/findShareEatLogo.png'
 import Sharing from '../../../images/welcomeSharingIcon.png'
 import Find from '../../../images/welcomeFindIcon.png'
 import Login from "../login/login-connector";
-import UploadImage from '../../uploadImage/upload-image-component'
 
 function Welcome({ isModalOpenValue, openLoginModalAction }) {
     return (
