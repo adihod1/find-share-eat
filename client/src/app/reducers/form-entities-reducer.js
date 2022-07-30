@@ -15,10 +15,15 @@ const initialState = {
   categoriesList: [],
   category: "",
   picture: [],
+  recipeList: [],
 };
 
 const formEntitiesReducer = (state = initialState, action) => {
   switch (action.type) {
+    case actions.CREATE_RECIPE:
+      const recipeInput = [...state.recipeList, action.item];
+      return { ...state, recipeList: recipeInput };
+
     case actions.ADD_INGREDIENTS:
       return {
         ...state,

@@ -1,7 +1,14 @@
 import CategoriesApiService from "../../api/categories-client";
-import { recipeCategory } from "../middlewares/form-middleware";
+import { recipeCategory, addRecipe } from "../middlewares/form-middleware";
 
 import actions from "./constants";
+
+export const addUserRecipe = (recipe) => {
+  return {
+    type: actions.CREATE_RECIPE,
+    recipe,
+  };
+};
 
 export const addIngredients = (ingredients) => {
   return {
@@ -39,12 +46,3 @@ export const addPicture = (picture) => {
     type: actions.ADD_PICTURE,
   };
 };
-
-// export const loadCategoriesListAction = () => {
-//   console.log("api");
-//   return async (dispatch) => {
-//     const response = await CategoriesApiService.getCategories(categories);
-//     console.log("ccaatteegories", response);
-//     dispatch(getCategories(response));
-//   };
-// };

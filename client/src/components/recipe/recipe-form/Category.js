@@ -36,7 +36,7 @@ function Category({ editMode, recipe, categoriesList, getCategories }) {
 
 const mapStateToProps = (state, ownProps) => {
   const categoriesList = getCategoriesList(state);
-
+  console.log("sss", categoriesList);
   return { categoriesList };
 };
 

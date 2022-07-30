@@ -1,3 +1,7 @@
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { userLoginAction } from "../../../app/actions/login-actions";
+import { getLoginUser } from "../../../app/selectors/login-selectors";
 import cupcakeIcon from "../../../images/cupcakeIcon.png";
 import { useCallback, useState } from "react";
 import findShareEatLogo from "../../../images/findShareEatLogo.png";
@@ -9,7 +13,7 @@ import Procedure from "./Instructions";
 
 import "./RecipeForm.scss";
 
-export default function RecipeForm({ addRecipeAction, getUser }) {
+function RecipeForm({ addRecipeAction, getUser }) {
   const [inputValue, setInputValue] = useState("");
   // const handleFormSubmit = (e) => {
   //   e.preventDefault();
@@ -84,3 +88,14 @@ export default function RecipeForm({ addRecipeAction, getUser }) {
     </div>
   );
 }
+
+const mapStateToProps = (state, ownProps) => {
+  const userValue = getLoginUser(state);
+  return { userValue };
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return bindActionCreators({ userLoginAction }, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecipeForm);
