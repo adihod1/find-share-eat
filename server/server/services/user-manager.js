@@ -8,6 +8,10 @@ class UserManager {
     getUser = async (id) => {
         return await User.findByPk(id);
     };
+
+    _getByEmailUser = async (email) => {
+        return await User.findOne({where: {email: email}});
+    };
 }
 
 module.exports = new UserManager();
