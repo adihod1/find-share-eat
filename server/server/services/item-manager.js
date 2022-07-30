@@ -4,88 +4,66 @@ const {
   Ingredient,
   UsersRecipes,
   Category,
+  sequelize,
 } = require("../db/models");
 
 const Op = require("Sequelize").Op;
 
 class itemManager {
-  createItems = async () => {
-    User.create(
+  addRecipe = async (id, options) => {
+    console.log(id);
+    const values = this._sanitizeRecipe(options.recipe);
+    const recipe = await Recipe.create(
       {
-        firstName: "heeyy",
-        lastName: "heeyy",
-        userName: "hewtyyeye",
-        email: "heyewytey@gmail.com",
-        password: "12345",
-        Recipes: [
-          {
-            recipeName: "cake",
-            description: "cake",
-            cookingTime: "1:00",
-            instructions: "buy cake",
-          },
-        ],
-      },
-      {
-        include: [Recipe],
-      }
-    );
-  };
-
-  addRecipe = async () => {
-    Recipe.create(
-      {
-        recipeName: "cakke",
-        description: "cakke",
-        cookingTime: "1:00",
-        instructions: "buy cake",
-        Ingredients: [
-          {
-            ingredientName: "sugar",
-            amount: 300,
-            measurement: "1 cup",
-          },
-          {
-            ingredientName: "salt",
-            amount: 300,
-            measurement: "1 cup",
-          },
-          {
-            ingredientName: "water",
-            amount: 300,
-            measurement: "1 cup",
-          },
-        ],
+        ...values,
+        Ingredients: options.ingredients,
       },
       {
         include: [Ingredient],
       }
     );
+    const userRow = await User.findByPk(id);
+    recipe.addUser(userRow, { through: UsersRecipes });
   };
-  // createRecipe = async () => {
-  //   Recipe.create({
-  //     recipeName: "cake",
-  //     description: "cake",
-  //     cookingTime: "1:00",
-  //     instructions: "buy cake",
-  //   });
-  // };
-  // createIngredients = async () => {
-  //   Ingredient.create({
-  //     ingredientName: "sugar",
-  //     amount: 300,
-  //     measurement: "1 cup",
-  //     recipeId: "1",
-  //   });
-  // };
 
-  addUser = async () => {
+  // EXAMPLE FOR REQ.BODY:
+  // {userId: integer
+  //   recipe: {}
+  //   ingredients: [{}]
+  // }
+  // await Recipe.create(
+  //   {
+  //     recipeName: "fruit cake",
+  //     description: "cake",
+  //     cookingTime: "2:00",
+  //     instructions: "mix all",
+  //     Ingredients: [
+  //       {
+  //         ingredientName: "sugar",
+  //         amount: 300,
+  //         measurement: "1 cup",
+  //       },
+  //       {
+  //         ingredientName: "salt",
+  //         amount: 300,
+  //         measurement: "1 cup",
+  //       },
+  //       {
+  //         ingredientName: "water",
+  //         amount: 300,
+  //         measurement: "1 cup",
+  //       },
+  //     ],
+  //     Users: [{ userId: id }],
+  //   },
+  //   {
+  //     include: [Ingredient, User],
+  //   }
+  // );
+
+  addUser = async (options) => {
     await User.create({
-      firstName: "adiii",
-      lastName: "hoddd",
-      userName: "adihoddd",
-      email: "adihoddd@gmail.com",
-      password: "125345",
+      ...options,
     });
   };
 
@@ -118,9 +96,11 @@ class itemManager {
     return recipe;
   };
 
-  getRecipeByRecipeName = async (ingredients) => {
+  getRecipeByIngredients = async (ingredients) => {
+    console.log(ingredients);
     const ingredientsAll = ingredients.map((ingredient) => {
-      return { ingredientName: ingredient };
+      console.log(ingredient);
+      return { ingredientName: ingredient.ingredientName };
     });
     const recipe = await Ingredient.findAll({
       include: [{ model: Recipe, include: { model: Ingredient } }],
@@ -147,27 +127,71 @@ class itemManager {
     return await Category.findAll();
   };
 
-  editRecipe = async (id) => {
-    await Recipe.update(
-      { recipeName: "chocolate cake" },
-      { where: { id: id } }
-    );
+  _sanitizeRecipe = (data) => {
+    const values = {};
+    const PUBLIC_FIELDS = [
+      "recipeName",
+      "description",
+      "instructions",
+      "image",
+      "cookingTime",
+      "categoryId",
+      "ingredients",
+    ];
+
+    PUBLIC_FIELDS.forEach((field) => {
+      if (data[field]) {
+        values[field] = data[field];
+      }
+    });
+    return values;
   };
 
-  editIngredient = async (id) => {
-    await Ingredient.update(
-      { ingredientName: "flower" },
-      { where: { id: id } }
-    );
+  editRecipe = async (id, options) => {
+    const values = this._sanitizeRecipe(options);
+    await Recipe.update({ ...values }, { where: { id: id } });
   };
+
+  // editIngredient = async (id, option) => {
+  //   await Ingredient.update(
+  //     { ingredientName: "flower" },
+  //     { where: { id: id } }
+  //   );
+  // };
 
   deleteRecipe = async (id) => {
-    await Recipe.destroy({
-      where: {
-        id: id,
-      },
-      include: [{ model: Ingredient, include: { where: { recipeId: id } } }],
-    });
+    try {
+      const result = await sequelize.transaction(async (t) => {
+        await UsersRecipes.destroy(
+          {
+            where: { recipeId: id },
+          },
+          { transaction: t }
+        );
+        await Recipe.destroy(
+          {
+            where: {
+              id: id,
+            },
+          },
+          { transaction: t }
+        );
+        await Ingredient.destroy(
+          {
+            where: { recipeId: id },
+          },
+          { transaction: t }
+        );
+      });
+      return true;
+    } catch (e) {
+      console.log(e);
+      return false;
+    }
+  };
+
+  deleteIngredient = async (id) => {
+    await Ingredient.destroy({ where: { id: id } });
   };
 }
 
