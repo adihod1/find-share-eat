@@ -10,11 +10,10 @@ function Sidebar({ userValue, userLogoutAction }) {
             <Link to="/" className="side-bar-logo">
                 <img src={findShareEatLogo} />
             </Link>
-            {userValue && <div className="user-login-details">
+            {/* {userValue && <div className="user-login-details">
                 <img alt="" src={userValue.picture} />
                 <span>Hello {userValue.name} / {userValue.email}</span>
-            </div>}
-
+            </div>} */}
             <div className="sidebar-items">
                 <Link to="/profile" className='link'>
                     <div className='nav-bar-item'>

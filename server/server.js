@@ -6,6 +6,7 @@ const cors = require('./server/middleware/cors');
 const logger = require('./server/middleware/logger');
 const ApiRouter = require('./server/routes/api');
 const AuthRouter = require('./server/routes/auth');
+const ImageRouter = require('./server/routes/images')
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ app.use([errorHandler, logger, cors, express.json()]);
 
 app.use('/api', ApiRouter);
 app.use('/auth', AuthRouter);
+app.use('/images', ImageRouter)
 
 
 process.on("unhandledRejection", (reason, promise) => {

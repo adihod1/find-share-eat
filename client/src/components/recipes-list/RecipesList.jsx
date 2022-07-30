@@ -17,6 +17,8 @@ const emptyRecipeList = () => (
     </p>
 )
 
+const BUCKET_URL = `https://storage.googleapis.com/findshareeat/`
+
 const RecipesList = ({ fetchRecipesAction, recipesValue }) => {
 
     const [chosenRecipe, setChosenRecipe] = useState({})
@@ -30,11 +32,11 @@ const RecipesList = ({ fetchRecipesAction, recipesValue }) => {
             <Modal show={chosenRecipe ? Object.keys(chosenRecipe).length > 0 : false}
                 onHide={() => setChosenRecipe({})}>
                 <Modal.Header closeButton className={'modal-header'}>
-                    <Modal.Title class-name={'modal-title'}>{chosenRecipe.title}</Modal.Title>
+                    <Modal.Title class-name={'modal-title'}>{chosenRecipe.recipeName}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div className={'modal-container'}>
-                        <img src={chosenRecipe.image} />
+                        <img src={`${BUCKET_URL}${chosenRecipe.image}`} className={`modal-image`} />
                         <p className={'modal-description'}>{chosenRecipe.instructions}</p>
                     </div>
                 </Modal.Body>
@@ -46,7 +48,7 @@ const RecipesList = ({ fetchRecipesAction, recipesValue }) => {
                         {recipesValue.length && recipesValue.map((recipe, index) => {
                             return (
                                 <Col key={recipe.image + recipe.description} md="12" lg="6" xl="3">
-                                    <Recipe openModal={setChosenRecipe} recipe={recipe} />
+                                    <Recipe baseUrl={BUCKET_URL} openModal={setChosenRecipe} recipe={recipe} />
                                 </Col>
                             )
                         })}
