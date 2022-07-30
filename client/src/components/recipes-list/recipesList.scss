@@ -1,0 +1,33 @@
+.recipes-list-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 20px;
+}
+
+.modal-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-title {
+    width: 100%;
+    text-align: center;
+}
+
+.modal-description {
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.modal-image {
+    width: 100%;
+}

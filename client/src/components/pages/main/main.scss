@@ -5,3 +5,9 @@
   width: 100vw;
   background-color: color('background-pink');
 }
+
+.screens {
+  position: absolute;
+  right: 0;
+  width: calc(100% - 350px)
+}

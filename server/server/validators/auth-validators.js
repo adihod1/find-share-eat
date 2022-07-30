@@ -1,9 +1,19 @@
 const {validateSchema} = require("../../utils/validatos-utils");
 
 const loginValidator = validateSchema({
-    'user.name': {
+    'user.firstName': {
         isString: true,
-        errorMessage: `Missing/Bad user.name`,
+        errorMessage: `Missing/Bad user.firstName`,
+        in: ['body']
+    },
+    'user.lastName': {
+        isString: true,
+        errorMessage: `Missing/Bad user.lastName`,
+        in: ['body']
+    },
+    'user.userName': {
+        isString: true,
+        errorMessage: `Missing/Bad user.userName`,
         in: ['body']
     },
     'user.email': {
@@ -11,12 +21,7 @@ const loginValidator = validateSchema({
         errorMessage: `Missing/Bad user.email`,
         in: ['body']
     },
-    'user.sub': {
-        isString: true,
-        errorMessage: `Missing/Bad user.sub`,
-        in: ['body']
-    },
-    'user.picture': {
+    'user.password': {
         isString: true,
         optional: true,
         errorMessage: `Bad user.picture`,

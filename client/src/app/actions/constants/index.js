@@ -9,6 +9,7 @@ const actions = {
   //   LOGIN_FAIL: "LOGIN_FAIL",
   //   LOGOUT_SUCCESS: "LOGOUT_SUCCESS",
 
+<<<<<<< HEAD
   //   GET_ERRORS: "GET_ERRORS",
   //   CREATE_MESSAGE: "CREATE_MESSAGE",
   //   CLEAR_MESSAGE: "CLEAR_MESSAGE",
@@ -41,6 +42,11 @@ const actions = {
   USER_LOGOUT: "USER_LOGOUT",
   OPEN_MODAL: "OPEN_MODAL",
   CLOSE_MODAL: "CLOSE_MODAL",
+=======
+    // RECIPE
+    FETCHED_RECIPES: "FETCHED_RECIPES",
+
+>>>>>>> main
 };
 
 export default actions;

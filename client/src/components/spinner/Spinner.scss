@@ -1,6 +1,5 @@
 .spinner-wrapper {
   position: relative;
-  top: 80%;
 }
 
 .spinner {
@@ -10,6 +9,9 @@
   z-index: 999999;
   background: #f675e5;
   opacity: 0.45;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hide-spinner {
@@ -26,6 +28,7 @@
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(359deg);
   }

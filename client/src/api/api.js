@@ -8,15 +8,15 @@ export default class ApiBase {
         };
     }
 
-    _get(path) {
+    async _get(path) {
         const options = {
             method: 'GET',
             headers: this._HEADERS
         }
-        return this._response(this._API_BASE + path, options)
+        return await this._response(this._API_BASE + path, options)
     }
 
-    _post(path, body) {
+    async _post(path, body) {
         const options = {
             method: 'POST',
             headers: this._HEADERS
@@ -24,7 +24,29 @@ export default class ApiBase {
         if (body) {
             options.body = body
         }
-        return this._response(this._API_BASE + path, options)
+        return await this._response(this._API_BASE + path, options)
+    }
+
+    async _put(path, body) {
+        const options = {
+            method: 'PUT',
+            headers: this._HEADERS
+        }
+        if (body) {
+            options.body = body
+        }
+        return await this._response(this._API_BASE + path, options)
+    }
+
+    async _delete(path, body) {
+        const options = {
+            method: 'DELETE',
+            headers: this._HEADERS
+        }
+        if (body) {
+            options.body = body
+        }
+        return await this._response(this._API_BASE + path, options)
     }
 
     async _response(url, options) {

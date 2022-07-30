@@ -1,8 +1,7 @@
 .sidebar-container {
   width: 350px;
-  height: 97%;
+  height: 100%;
   position: absolute;
-  margin: 10px;
   background-color: #D35CA3;
   padding-left: 10px;
 }
@@ -15,12 +14,12 @@
 }
 
 .title {
-    text-align: center;
-    font-size: 30px;
-    font-weight: bold;
-    color: purple;
-    -webkit-text-stroke-width: 0.5px;
-    -webkit-text-stroke-color: #ffffff;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  color: purple;
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: #ffffff;
 }
 
 .nav-item-text {
@@ -66,6 +65,13 @@
 .side-bar-logo img {
   width: 320px;
   height: 80px;
+  cursor: pointer;
+}
+
+.side-bar-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .sidebar-items {

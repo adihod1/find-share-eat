@@ -5,10 +5,10 @@ import Profile from "../profile/Profile";
 import Home from "../home/home-connector";
 import Sidebar from "../../sidebar/sidebar-connector";
 import Spinner from "../../spinner/spinner-connector";
-import RecipesList from "../../recipes-list/RecipesList";
 import Welcome from "../welcome/welcome-connector";
 import RecipeForm from "../../recipe/recipe-form/RecipeForm";
 
+<<<<<<< HEAD
 function Main({ isLoggedInValue, openLoginModalAction, isModalOpenValue }) {
   const AppRouter = () => {
     return (
@@ -24,6 +24,33 @@ function Main({ isLoggedInValue, openLoginModalAction, isModalOpenValue }) {
           </Routes>
         </BrowserRouter>
       </div>
+=======
+
+function Main({ isLoggedInValue, openLoginModalAction, isModalOpenValue }) {
+
+    return (
+        <div className="main">
+            <Spinner />
+            < BrowserRouter >
+                {isLoggedInValue ?
+                    <>
+                        <Sidebar />
+                        <div className={'screens'}>
+                            <Routes>
+                                <Route path="/" element={<Home />} />
+                                <Route path="/profile" element={<Profile />} />
+                                <Route path="/saved" element={<Profile />} />
+                                <Route path="/shared" element={<Profile />} />
+                            </Routes>
+                        </div>
+                    </>
+                    :
+                    <Routes>
+                        <Route path="/" element={<Welcome />} />
+                    </Routes>}
+            </BrowserRouter >
+        </div >
+>>>>>>> main
     );
   };
 
