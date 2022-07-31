@@ -2,7 +2,7 @@ import ApiBase from "./api";
 
 export default class IngredientClient extends ApiBase {
     constructor() {
-        super('http://localhost:3001/api/recipe')
+        super('http://localhost:3001/api/ingredient')
     }
 
     // GET

@@ -1,18 +1,16 @@
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import MainComponent from "./main-component";
-import {openLoginModalAction, userLogoutAction} from "../../../app/actions/login-actions";
-import {getLoginIsLoggedIn, getLoginIsModalOpen, getLoginUser} from "../../../app/selectors/login-selectors";
+import {userLoginAction} from "../../../app/actions/login-actions";
+import {getLoginIsLoggedIn} from "../../../app/selectors/login-selectors";
 
 const mapStateToProps = (state, ownProps) => {
-    const userValue = getLoginUser(state);
     const isLoggedInValue = getLoginIsLoggedIn(state);
-    const isModalOpenValue = getLoginIsModalOpen(state);
-    return {userValue, isLoggedInValue, isModalOpenValue};
+    return {isLoggedInValue};
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-    return bindActionCreators({userLogoutAction, openLoginModalAction}, dispatch);
+    return bindActionCreators({userLoginAction}, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainComponent);

@@ -6,7 +6,7 @@ const cors = require('./server/middleware/cors');
 const logger = require('./server/middleware/logger');
 
 const ApiRouter = require('./server/routes/api');
-const AuthRouter = require('./server/routes/auth');
+const AuthRouter = require('./server/routes/api/auth');
 const ImageRouter = require('./server/routes/images')
 
 dotenv.config();

@@ -1,9 +1,9 @@
 import "./login.scss";
-import React, { useState } from "react";
+import React, {useState} from "react";
 import Modal from 'react-bootstrap/Modal';
-import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
+import {GoogleLogin, GoogleOAuthProvider} from '@react-oauth/google';
 import lizzieImage from '../../../images/lizzieIcon.png'
-import jwt_decode from 'jwt-decode';
+import {AuthToken} from "../../../utils/token-storage";
 
 const CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID
 
@@ -17,7 +17,8 @@ function Login({ userLoginAction, closeLoginModalAction }) {
     }
 
     const onLoginSuccess = (credentialResponse) => {
-        const user = jwt_decode(credentialResponse.credential)
+        const user = AuthToken.parseToken(credentialResponse.credential)
+        AuthToken.addToken(credentialResponse.credential)
         setIsError(false)
         userLoginAction(user)
     }
