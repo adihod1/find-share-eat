@@ -27,6 +27,8 @@ const RecipesList = ({ fetchRecipesAction, recipesValue }) => {
         fetchRecipesAction()
     }, [])
 
+    console.log(recipesValue)
+
     return (
         <div className={"recipes-list-container"}>
             <Modal show={chosenRecipe ? Object.keys(chosenRecipe).length > 0 : false}
@@ -37,7 +39,16 @@ const RecipesList = ({ fetchRecipesAction, recipesValue }) => {
                 <Modal.Body>
                     <div className={'modal-container'}>
                         <img src={`${BUCKET_URL}${chosenRecipe.image}`} className={`modal-image`} />
-                        <p className={'modal-description'}>{chosenRecipe.instructions}</p>
+                        <p className={'modal-description'}>{chosenRecipe.description}</p>
+                        <p>{`Cooking time: ${chosenRecipe.cookingTime}`}</p>
+                        <h3>Ingridients:</h3>
+                        {chosenRecipe?.Ingridients?.map(ingridient => {
+                            return (
+                                <p>{ingridient}</p>
+                            )
+                        })}
+                        <h3>Instructions:</h3>
+                        <p>{chosenRecipe.instructions}</p>
                     </div>
                 </Modal.Body>
             </Modal>
