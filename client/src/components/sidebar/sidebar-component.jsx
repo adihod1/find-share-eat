@@ -30,7 +30,7 @@ function Sidebar({ userValue, userLogoutAction }) {
                 <Link to="/" className='link'>
                     <div className='nav-bar-item'>
                         <FaCloudsmith className="logo" />
-                        <p className="nav-item-text">Shared Recipes</p>
+                        <p className="nav-item-text">My Recipes</p>
                     </div>
                 </Link>
                 <Link to="/" className='link'>

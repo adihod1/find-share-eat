@@ -19,15 +19,9 @@ const emptyRecipeList = () => (
 
 const BUCKET_URL = `https://storage.googleapis.com/findshareeat/`
 
-const RecipesList = ({ fetchRecipesAction, recipesValue }) => {
+const RecipesList = ({ recipes }) => {
 
     const [chosenRecipe, setChosenRecipe] = useState({})
-
-    useEffect(() => {
-        fetchRecipesAction()
-    }, [])
-
-    console.log(recipesValue)
 
     return (
         <div className={"recipes-list-container"}>
@@ -53,10 +47,10 @@ const RecipesList = ({ fetchRecipesAction, recipesValue }) => {
                 </Modal.Body>
             </Modal>
 
-            {!recipesValue.length ? emptyRecipeList() :
+            {!recipes.length ? emptyRecipeList() :
                 <Container>
                     <Row>
-                        {recipesValue.length && recipesValue.map((recipe, index) => {
+                        {recipes.length && recipes.map((recipe, index) => {
                             return (
                                 <Col key={recipe.image + recipe.description}>
                                     <Recipe baseUrl={BUCKET_URL} openModal={setChosenRecipe} recipe={recipe} />

@@ -1,12 +1,16 @@
 import "./home.scss";
-import React from "react";
+import React, { useEffect } from "react";
 import RecipesList from '../../recipes-list/recipe-list-connector'
 
-function Home() {
+function Home({ fetchRecipesAction, recipesValue }) {
+
+    useEffect(() => {
+        fetchRecipesAction()
+    }, [])
 
     return (
         <div className={"home-container"}>
-            <RecipesList />
+            {recipesValue.length > 0 && <RecipesList recipes={recipesValue} />}
         </div>
     );
 
