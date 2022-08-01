@@ -23,7 +23,7 @@ export default function ChooseTime({ editMode, recipe }) {
 
   return (
     <div>
-      <h1 className="font">Cook Time</h1>
+      <h1 className="title">Cook Time</h1>
       <p>How long is it going to take to cook?</p>
       <div>
         <div className="flex">

@@ -1,46 +1,68 @@
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { userLoginAction } from "../../../app/actions/login-actions";
-import { getLoginUser } from "../../../app/selectors/login-selectors";
 import cupcakeIcon from "../../../images/cupcakeIcon.png";
-import { useCallback, useState } from "react";
+import { useCallback, useState, useEffect } from "react";
 import findShareEatLogo from "../../../images/findShareEatLogo.png";
 import penguinIcon from "../../../images/penguinIcon.png";
-import ChooseTime from "./ChooseTime";
-import Ingredients from "./Ingredients";
-import Category from "./Category";
-import Procedure from "./Instructions";
+import ChooseTime from "./time/ChooseTime";
+import Ingredients from "./ingredients/Ingredients";
+import Category from "./category/category-connector";
+import Instructions from "./instructions/Instructions";
 
 import "./RecipeForm.scss";
 
-function RecipeForm({ addRecipeAction, getUser }) {
+export default function RecipeForm({
+  addRecipeAction,
+  userValue,
+  userCategory,
+}) {
   const [inputValue, setInputValue] = useState("");
-  // const handleFormSubmit = (e) => {
-  //   e.preventDefault();
+  const [inputTitle, setInputTitle] = useState("");
+  const [inputDescription, setInputDescription] = useState("");
 
-  // };
   // recipe: inputValue, ingredients: [{"h"}]
-  const id = "";
+  const userId = userValue.id;
+  console.log("category", userCategory);
 
-  // const handleGetUser = useCallback(async () => {
-  //   console.log("user");
-  //   await getUser();
-  // }, [getuser]);
+  console.log("userrrr", userValue.id);
 
-  const handleFormSubmit = useCallback(async () => {
-    await addRecipeAction(id, { recipe: inputValue, ingredients: ["h"] });
+  const onInputTitleChange = useCallback(
+    (e) => {
+      setInputTitle(e.target.value);
+    },
+    [setInputTitle]
+  );
+
+  const onInputDescriptionChange = useCallback(
+    (e) => {
+      setInputDescription(e.target.value);
+    },
+    [setInputDescription]
+  );
+
+  const handleFormSubmit = useCallback(() => {
+    console.log("add recipe");
+    addRecipeAction(userId, {
+      recipe: {
+        recipeName: inputTitle,
+        description: inputDescription,
+        cookingTime: "2:00",
+        ingredients: "",
+        instructions: "mix all",
+        categoryId: userCategory,
+      },
+      ingredients: ["h"],
+    });
     setInputValue("");
   }, [addRecipeAction, inputValue]);
-
   return (
     <div className="app-container">
-      <div className="sideTitle">
+      {/* <div className="sideTitle">
         <img className="logo-img" src={findShareEatLogo} alt="logo" />
         <h1 className="font">TIME</h1>
         <h1 className="font">TO</h1>
         <h1 className="font">COOK</h1>
         <img className="penguin-img" src={penguinIcon} alt="logo" />
-      </div>
+      </div> */}
+
       <form className="app-container" onSubmit={handleFormSubmit}>
         <div>
           <div className="contain">
@@ -52,8 +74,7 @@ function RecipeForm({ addRecipeAction, getUser }) {
                 id="title"
                 className="your-title"
                 placeholder="Write a title for your recipe"
-                // defaultValue={props.editMode ? props.recipe[0].title : null}
-                // onChange={(e) => setTitle(e.target.value)}
+                onChange={onInputTitleChange}
               />
             </div>
             <div>
@@ -65,6 +86,7 @@ function RecipeForm({ addRecipeAction, getUser }) {
                   rows={3}
                   className="Description"
                   placeholder="Write a short description"
+                  onChange={onInputDescriptionChange}
                   // defaultValue={props.editMode ? props.recipe[0].desc : null}
                   // onChange={(e) => setDesc(e.target.value)}
                 />
@@ -72,7 +94,7 @@ function RecipeForm({ addRecipeAction, getUser }) {
             </div>
             <Category />
             <Ingredients />
-            <Procedure />
+            <Instructions />
             <ChooseTime />
             {/* <PictureUpload />  */}
           </div>
@@ -88,14 +110,3 @@ function RecipeForm({ addRecipeAction, getUser }) {
     </div>
   );
 }
-
-const mapStateToProps = (state, ownProps) => {
-  const userValue = getLoginUser(state);
-  return { userValue };
-};
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return bindActionCreators({ userLoginAction }, dispatch);
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(RecipeForm);

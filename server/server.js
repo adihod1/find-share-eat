@@ -1,13 +1,12 @@
+const dotenv = require("dotenv");
+const express = require("express");
+const errorHandler = require("./server/middleware/error-handling");
+const cors = require("./server/middleware/cors");
+const logger = require("./server/middleware/logger");
 
-const dotenv = require('dotenv');
-const express = require('express');
-const errorHandler = require('./server/middleware/error-handling');
-const cors = require('./server/middleware/cors');
-const logger = require('./server/middleware/logger');
-
-const ApiRouter = require('./server/routes/api');
-const AuthRouter = require('./server/routes/auth');
-const ImageRouter = require('./server/routes/images')
+const ApiRouter = require("./server/routes/api");
+const AuthRouter = require("./server/routes/api/auth");
+const ImageRouter = require("./server/routes/images");
 
 dotenv.config();
 
@@ -17,11 +16,9 @@ const app = express();
 
 app.use([errorHandler, logger, cors, express.json()]);
 
-
-app.use('/api', ApiRouter);
-app.use('/auth', AuthRouter);
-app.use('/images', ImageRouter)
-
+app.use("/api", ApiRouter);
+app.use("/auth", AuthRouter);
+app.use("/images", ImageRouter);
 
 process.on("unhandledRejection", (reason, promise) => {
   // console.log("Unhandled Rejection", reason.message);

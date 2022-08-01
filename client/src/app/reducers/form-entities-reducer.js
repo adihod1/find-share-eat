@@ -1,15 +1,9 @@
-// import {
-//   ADD_CATEGORY,
-//   GET_CATEGORIES,
-//   ADD_COOKTIME,
-//   ADD_INGREDIENTS,
-//   ADD_PICTURE,
-//   ADD_PROCEDURES,
-// } from "../actions/constants";
 import actions from "../actions/constants";
 
 const initialState = {
-  ingredients: [],
+  ingredient: "",
+  measurement: "",
+  quantity: "",
   procedures: [],
   cook_time: "",
   categoriesList: [],
@@ -24,15 +18,27 @@ const formEntitiesReducer = (state = initialState, action) => {
       const recipeInput = [...state.recipeList, action.item];
       return { ...state, recipeList: recipeInput };
 
-    case actions.ADD_INGREDIENTS:
+    case actions.ADD_INGREDIENT:
       return {
         ...state,
-        ingredients: action.ADD_INGREDIENTS,
+        ingredient: action.ADD_INGREDIENT,
       };
-    case actions.ADD_PROCEDURES:
+    case actions.ADD_MEASUREMENT:
       return {
         ...state,
-        procedures: action.ADD_PROCEDURES,
+        measurement: action.ADD_MEASUREMENT,
+      };
+
+    case actions.ADD_QUANTITY:
+      return {
+        ...state,
+        quantity: action.ADD_QUANTITY,
+      };
+
+    case actions.ADD_INSTRUCTION:
+      return {
+        ...state,
+        instructions: action.ADD_INSTRUCTION,
       };
     case actions.ADD_COOKTIME:
       return {
@@ -40,20 +46,14 @@ const formEntitiesReducer = (state = initialState, action) => {
         cook_time: action.ADD_COOKTIME,
       };
     case actions.ADD_CATEGORY:
-      return {
-        ...state,
-        category: action.ADD_CATEGORY,
-      };
-    case actions.GET_CATEGORIES:
-      console.log(action);
+      console.log("state", action);
+      return { category: action.category };
 
-      // return {
-      //   ...state,
-      //   categoriesList: action.GET_CATEGORIES,
-      // };
-      const { categoriesList } = action.categories;
-      console.log("categoriessss", action.categories);
-      return { ...state, categoriesList };
+    case actions.GET_CATEGORIES:
+      console.log("action", action);
+      const categoriesList = action.categories;
+      console.log("categoriessss", categoriesList);
+      return { categoriesList: action.categories };
 
     case actions.ADD_PICTURE:
       return {

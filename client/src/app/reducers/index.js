@@ -5,14 +5,9 @@ import spinner from "./spinner-reducer";
 import recipeList from "./recipe-list-reducer";
 
 const allReducers = combineReducers({
-<<<<<<< HEAD
   login,
   spinner,
+  recipeList,
   formEntities,
-=======
-    login,
-    spinner,
-    recipeList
->>>>>>> main
 });
 export default allReducers;

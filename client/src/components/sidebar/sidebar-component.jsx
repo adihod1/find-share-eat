@@ -1,7 +1,7 @@
 import React from 'react'
 import './sidebar.scss'
 import { Link } from 'react-router-dom';
-import { FaBookmark, FaCloudsmith, FaSignOutAlt, FaUser } from "react-icons/fa";
+import { FaBookmark, FaCloudsmith, FaSignOutAlt, FaUser, FaShareSquare } from "react-icons/fa";
 import findShareEatLogo from "../../images/findShareEatLogo.png";
 
 function Sidebar({ userValue, userLogoutAction }) {
@@ -27,10 +27,16 @@ function Sidebar({ userValue, userLogoutAction }) {
                         <p className="nav-item-text">Saved Recipes</p>
                     </div>
                 </Link>
-                <Link to="/" className='link'>
+                <Link to="/share-recipe" className='link'>
+                    <div className='nav-bar-item'>
+                        <FaShareSquare className="logo" />
+                        <p className="nav-item-text">Share your own recipe</p>
+                    </div>
+                </Link>
+                <Link to="/shared" className='link'>
                     <div className='nav-bar-item'>
                         <FaCloudsmith className="logo" />
-                        <p className="nav-item-text">Shared Recipes</p>
+                        <p className="nav-item-text">My Shared Recipes</p>
                     </div>
                 </Link>
                 <Link to="/" className='link'>

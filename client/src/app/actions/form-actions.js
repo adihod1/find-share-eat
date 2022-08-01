@@ -1,24 +1,48 @@
-import CategoriesApiService from "../../api/categories-client";
-import { recipeCategory, addRecipe } from "../middlewares/form-middleware";
+import {
+  recipeCategory,
+  addRecipe,
+  addUserCategory,
+  addUserMeasurement,
+  addUserQuantity,
+  addUserIngredient,
+  addUserInstructions,
+} from "../middlewares/form-middleware";
 
 import actions from "./constants";
 
-export const addUserRecipe = (recipe) => {
+export const addUserRecipe = (id, recipe) => {
   return {
     type: actions.CREATE_RECIPE,
+    id,
     recipe,
   };
 };
 
-export const addIngredients = (ingredients) => {
-  return {
-    type: actions.ADD_INGREDIENTS,
+export const addIngredient = (ingredient) => {
+  return (dispatch) => {
+    const addIngredient = addUserIngredient(ingredient);
+    dispatch(addIngredient);
   };
 };
 
-export const addProcedures = (procedures) => {
-  return {
-    type: actions.ADD_PROCEDURES,
+export const addQuantity = (quantity) => {
+  return (dispatch) => {
+    const addQuantity = addUserQuantity(quantity);
+    dispatch(addQuantity);
+  };
+};
+
+export const addMeasurement = (measurement) => {
+  return (dispatch) => {
+    const addMeasurement = addUserMeasurement(measurement);
+    dispatch(addMeasurement);
+  };
+};
+
+export const addInstructions = (instructions) => {
+  return (dispatch) => {
+    const addInstructions = addUserInstructions(instructions);
+    dispatch(addInstructions);
   };
 };
 
@@ -29,14 +53,15 @@ export const addCooktime = (cook_time) => {
 };
 
 export const addCategory = (category) => {
-  return {
-    type: actions.ADD_CATEGORY,
+  return (dispatch) => {
+    console.log("actionCategory", category);
+    dispatch({ category });
   };
 };
 
-export const getCategories = (categories) => {
+export const getCategories = () => {
   return (dispatch) => {
-    const getCategories = recipeCategory(categories);
+    const getCategories = recipeCategory();
     dispatch(getCategories);
   };
 };
