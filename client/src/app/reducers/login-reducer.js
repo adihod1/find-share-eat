@@ -13,7 +13,6 @@ const loginReducer = (state = initialState, action) => {
         }
 
         case actions.USER_LOGIN: {
-            console.log(action.user)
             return { isLoggedIn: true, user: action.user };
         }
 

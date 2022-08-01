@@ -2,7 +2,7 @@ export function objectToQuerystring(params) {
     const qs = [];
     for (const key in params) {
         const value = params[key];
-        if (value) {
+        if (value?.length) {
             qs.push(`${key}=${value.toString()}`);
         }
     }

@@ -10,6 +10,10 @@ export default class IngredientClient extends ApiBase {
         return await this._get('/get-ingredients')
     }
 
+    async fetchIngredientsName() {
+        return await this._get('/get-ingredients-name')
+    }
+
     // PUT
     async editIngredient(ingredientId, ingredient) {
         return await this._put(ingredient, `/edit-ingredient/:ingredientId${ingredientId}`)

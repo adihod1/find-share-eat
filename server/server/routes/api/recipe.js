@@ -21,6 +21,7 @@ router.post("/add-recipe/:userId", recipeValidator, (req, res, next) => {
 // GET
 router.get('/get-all-recipes', (req, res, next) => {
     errWrapper(async () => {
+        //todo: add filters here
         res.status(200).json(await recipeManager.getAllRecipes());
     }, next);
 });
