@@ -21,13 +21,13 @@ function Sidebar({ userValue, userLogoutAction }) {
                         <p className="nav-item-text">Profile</p>
                     </div>
                 </Link>
-                <Link to="/" className='link'>
+                <Link to="/saved" className='link'>
                     <div className='nav-bar-item'>
                         <FaBookmark className="logo" />
                         <p className="nav-item-text">Saved Recipes</p>
                     </div>
                 </Link>
-                <Link to="/" className='link'>
+                <Link to="/shared" className='link'>
                     <div className='nav-bar-item'>
                         <FaCloudsmith className="logo" />
                         <p className="nav-item-text">My Recipes</p>
