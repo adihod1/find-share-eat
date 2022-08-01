@@ -55,7 +55,7 @@ export const addCooktime = (cook_time) => {
 export const addCategory = (category) => {
   return (dispatch) => {
     console.log("actionCategory", category);
-    dispatch({ category });
+    dispatch({ type: actions.ADD_CATEGORY, category });
   };
 };
 

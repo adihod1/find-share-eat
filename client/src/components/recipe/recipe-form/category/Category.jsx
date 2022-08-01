@@ -17,7 +17,7 @@ function Category({getCategories, categoriesList, addCategory }) {
     addCategory(findCategoryId);
     console.log('bla')
     // setSelectCategory("");
-  }, []);
+  }, [categoriesList]);
 
   useEffect(() => {
     getCategories();

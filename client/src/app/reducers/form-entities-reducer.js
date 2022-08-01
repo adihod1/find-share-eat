@@ -47,13 +47,20 @@ const formEntitiesReducer = (state = initialState, action) => {
       };
     case actions.ADD_CATEGORY:
       console.log("state", action);
-      return { category: action.category };
+      return {
+        ...state,
+        category: action.category,
+      };
 
     case actions.GET_CATEGORIES:
-      console.log("action", action);
-      const categoriesList = action.categories;
-      console.log("categoriessss", categoriesList);
-      return { categoriesList: action.categories };
+      // console.log("action", action);
+      // const categoriesList = action.categories;
+      // console.log("categoriessss", categoriesList);
+
+      return {
+        ...state,
+        categoriesList: action.categories,
+      };
 
     case actions.ADD_PICTURE:
       return {

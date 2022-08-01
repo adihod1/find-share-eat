@@ -45,29 +45,29 @@ export default function Ingredients({
     setInputMeasurement("");
     setInputIngredient("");
     // setFullIngredientDetails((e) => [...e, IngredientsDictionary]);
-    const uniqueIds = [];
 
-    const notDupliacateArr = fullIngredientDetails.filter((element) => {
-      const isDuplicate = uniqueIds.includes(
-        element.ingredientName,
-        element.amount,
-        element.measurement
-      );
+    const isDuplicate = fullIngredientDetails.includes(IngredientsDictionary);
 
-      if (!isDuplicate) {
-        uniqueIds.push(
-          element.ingredientName,
-          element.amount,
-          element.measurement
-        );
-      }
-    });
-    setFullIngredientDetails(notDupliacateArr);
+    if (!isDuplicate) {
+      setFullIngredientDetails([
+        ...fullIngredientDetails,
+        IngredientsDictionary,
+      ]);
+    }
+
     // console.log("ff", fullIngredientDetails);
   };
 
   const handleXClick = (procedure) => {
     setProcedures(procedures.filter((x) => x !== procedure));
+    const isDuplicate = fullIngredientDetails.includes(IngredientsDictionary);
+
+    if (isDuplicate) {
+      setFullIngredientDetails([
+        ...fullIngredientDetails,
+        IngredientsDictionary,
+      ]);
+    }
 
     // fullIngredientDetails.filter(
     //   (
