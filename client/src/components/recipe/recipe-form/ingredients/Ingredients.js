@@ -60,21 +60,19 @@ export default function Ingredients({
 
   const handleXClick = (procedure) => {
     setProcedures(procedures.filter((x) => x !== procedure));
-    const isDuplicate = fullIngredientDetails.includes(IngredientsDictionary);
-
-    if (isDuplicate) {
-      setFullIngredientDetails([
-        ...fullIngredientDetails,
-        IngredientsDictionary,
-      ]);
-    }
-
-    // fullIngredientDetails.filter(
-    //   (
-    //     (s) => (o) =>
-    //       ((k) => !s.has(k) && s.add(k))(keys.map((k) => o[k]).join("|"))
-    //   )(new Set())
-    // );
+    const stringToArr = procedure.split(" ");
+    const [amount, measurement, ingredientName] = stringToArr;
+    const stringToObject = { amount, measurement, ingredientName };
+    console.log(stringToObject);
+    setFullIngredientDetails((current) =>
+      current.filter((fullIngredient) => {
+        return (
+          fullIngredient.amount !== stringToObject.amount &&
+          fullIngredient.measurement !== stringToObject.measurement &&
+          fullIngredient.ingredientName !== stringToObject.ingredientName
+        );
+      })
+    );
   };
 
   console.log("full", fullIngredientDetails);
