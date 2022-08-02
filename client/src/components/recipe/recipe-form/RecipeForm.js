@@ -79,7 +79,7 @@ export default function RecipeForm({
         instructions: userInstructions,
         categoryId: userCategory,
       },
-      ingredients: userIngredients[0],
+      ingredients: userIngredients,
     });
     setInputValue("");
   }, [addUserRecipe]);
@@ -101,7 +101,7 @@ export default function RecipeForm({
         <div>
           {/* <button type="submit">{props.buttonLabel}</button> */}
           <input type="submit" value="Submit" />
-          <button onClick={printRecipe}>Print Recipe</button>
+          {/* <button onClick={printRecipe}>Print Recipe</button> */}
         </div>
         <div>
           <div className="contain">

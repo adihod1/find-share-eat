@@ -9,5 +9,8 @@
 .screens {
   position: absolute;
   right: 0;
-  width: calc(100% - 350px)
+  width: calc(100% - 350px);
+  height: 100%;
+  overscroll-behavior-y: contain;
+  overflow-y: auto;
 }
