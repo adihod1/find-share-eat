@@ -1,54 +1,32 @@
-import {
-  recipeCategory,
-  addRecipe,
-  addUserCategory,
-  addUserMeasurement,
-  addUserQuantity,
-  addUserIngredient,
-  addUserInstructions,
-} from "../middlewares/form-middleware";
+import { recipeCategory, addRecipe } from "../middlewares/form-middleware";
 
 import actions from "./constants";
 
 export const addUserRecipe = (id, recipe) => {
-  return {
-    type: actions.CREATE_RECIPE,
-    id,
-    recipe,
+  return (dispatch) => {
+    const createRecipe = addRecipe(id, recipe);
+    dispatch(createRecipe);
   };
 };
 
-export const addIngredient = (ingredient) => {
+export const addIngredients = (ingredients) => {
   return (dispatch) => {
-    const addIngredient = addUserIngredient(ingredient);
-    dispatch(addIngredient);
-  };
-};
-
-export const addQuantity = (quantity) => {
-  return (dispatch) => {
-    const addQuantity = addUserQuantity(quantity);
-    dispatch(addQuantity);
-  };
-};
-
-export const addMeasurement = (measurement) => {
-  return (dispatch) => {
-    const addMeasurement = addUserMeasurement(measurement);
-    dispatch(addMeasurement);
+    console.log("actionINGREDIENT", ingredients);
+    dispatch({ type: actions.ADD_INGREDIENTS, ingredients });
   };
 };
 
 export const addInstructions = (instructions) => {
   return (dispatch) => {
-    const addInstructions = addUserInstructions(instructions);
-    dispatch(addInstructions);
+    console.log("actionINSTRUCTUONS", instructions);
+    dispatch({ type: actions.ADD_INSTRUCTIONS, instructions });
   };
 };
 
-export const addCooktime = (cook_time) => {
-  return {
-    type: actions.ADD_COOKTIME,
+export const addCookTime = (cookTime) => {
+  return (dispatch) => {
+    console.log("actionCOOKTIME", cookTime);
+    dispatch({ type: actions.ADD_COOK_TIME, cookTime });
   };
 };
 

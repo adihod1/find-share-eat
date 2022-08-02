@@ -6,14 +6,11 @@ export const getCategoriesList = (state) =>
 export const getChosenCategory = (state) =>
   getCategoriesEntities(state).category;
 
-export const getChosenQuantity = (state) =>
-  getCategoriesEntities(state).category;
-
-export const getChosenMeasurement = (state) =>
-  getCategoriesEntities(state).category;
-
-export const getChosenIngredient = (state) =>
-  getCategoriesEntities(state).ingredient;
+export const getChosenIngredients = (state) =>
+  getCategoriesEntities(state).ingredients;
 
 export const getUserInstructions = (state) =>
   getCategoriesEntities(state).instructions;
+
+export const getUserCookTime = (state) =>
+  getCategoriesEntities(state).cook_time;

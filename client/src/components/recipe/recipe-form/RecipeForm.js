@@ -10,15 +10,46 @@ import Instructions from "./instructions/Instructions";
 import "./RecipeForm.scss";
 
 export default function RecipeForm({
-  addRecipeAction,
+  addUserRecipe,
   userValue,
   userCategory,
+  addIngredients,
+  userIngredients,
+  addInstructions,
+  userInstructions,
+  userCookingTime,
+  addCookTime,
 }) {
   const [inputValue, setInputValue] = useState("");
   const [inputTitle, setInputTitle] = useState("");
   const [inputDescription, setInputDescription] = useState("");
 
   // recipe: inputValue, ingredients: [{"h"}]
+
+  const handleAddIngredients =
+    ((ingredients) => {
+      addIngredients(ingredients);
+      console.log("blabla");
+      // setSelectCategory("");
+    },
+    [addIngredients]);
+
+  const handleAddInstructions =
+    ((instructions) => {
+      addInstructions(instructions);
+      console.log("blabla");
+      // setSelectCategory("");
+    },
+    [addInstructions]);
+
+  const handleAddTime =
+    ((time) => {
+      addCookTime(time);
+      console.log("blabla");
+      // setSelectCategory("");
+    },
+    [addCookTime]);
+
   const userId = userValue.id;
   console.log("category", userCategory);
 
@@ -40,21 +71,24 @@ export default function RecipeForm({
 
   const handleFormSubmit = useCallback(() => {
     console.log("add recipe");
-    addRecipeAction(userId, {
+    addUserRecipe(userId, {
       recipe: {
         recipeName: inputTitle,
         description: inputDescription,
-        cookingTime: "2:00",
-        ingredients: "",
-        instructions: "mix all",
+        cookingTime: userCookingTime,
+        instructions: userInstructions,
         categoryId: userCategory,
       },
-      ingredients: ["h"],
+      ingredients: userIngredients[0],
     });
     setInputValue("");
-  }, [addRecipeAction, inputValue]);
+  }, [addUserRecipe]);
+
+  const printRecipe = () => {
+    window.print();
+  };
   return (
-    <div className="app-container">
+    <div>
       {/* <div className="sideTitle">
         <img className="logo-img" src={findShareEatLogo} alt="logo" />
         <h1 className="font">TIME</h1>
@@ -63,7 +97,12 @@ export default function RecipeForm({
         <img className="penguin-img" src={penguinIcon} alt="logo" />
       </div> */}
 
-      <form className="app-container" onSubmit={handleFormSubmit}>
+      <form onSubmit={handleFormSubmit}>
+        <div>
+          {/* <button type="submit">{props.buttonLabel}</button> */}
+          <input type="submit" value="Submit" />
+          <button onClick={printRecipe}>Print Recipe</button>
+        </div>
         <div>
           <div className="contain">
             <div>
@@ -87,19 +126,18 @@ export default function RecipeForm({
                   className="Description"
                   placeholder="Write a short description"
                   onChange={onInputDescriptionChange}
-                  // defaultValue={props.editMode ? props.recipe[0].desc : null}
-                  // onChange={(e) => setDesc(e.target.value)}
                 />
               </div>
             </div>
             <Category />
-            <Ingredients />
-            <Instructions />
-            <ChooseTime />
+            <Ingredients
+              handleAddIngredients={(event) => handleAddIngredients(event)}
+            />
+            <Instructions
+              handleAddInstructions={(event) => handleAddInstructions(event)}
+            />
+            <ChooseTime handleAddTime={(event) => handleAddTime(event)} />
             {/* <PictureUpload />  */}
-          </div>
-          <div>
-            <button type="submit">{/* {props.buttonLabel} */}</button>
           </div>
         </div>
       </form>

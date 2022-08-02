@@ -1,15 +1,11 @@
-import { useState, useEffect, createRef } from "react";
+import { useState, useEffect, createRef, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import filterMeasurements from "./filterMeasurements";
 // import { MinusIcon, PlusIcon } from "@heroicons/react/solid";
 
 // import { addProcedures } from "../../../redux/actions/forms";
 
-export default function Ingredients({
-  quantityUserInput,
-  chosenUserMeasurement,
-  chosenUserIngredient,
-}) {
+export default function Ingredients({ handleAddIngredients }) {
   let quantityInput = createRef();
   let measurementInput = createRef();
   let ingredientInput = createRef();
@@ -20,10 +16,11 @@ export default function Ingredients({
   const [inputMeasurement, setInputMeasurement] = useState("");
   const [inputIngredient, setInputIngredient] = useState("");
 
-  // useEffect(() => {
-  //   dispatch(addProcedures(procedures));
-  // }, [procedures]);
+  useCallback(() => {
+    handleAddIngredients(fullIngredientDetails);
+  }, [handleAddIngredients]);
 
+  console.log("handle", typeof handleAddIngredients);
   const handleClick = () => {
     const quantity = quantityInput.current.value;
     const isNumber = !isNaN(Number(quantity));
@@ -44,7 +41,6 @@ export default function Ingredients({
     setInputQuantity("");
     setInputMeasurement("");
     setInputIngredient("");
-    // setFullIngredientDetails((e) => [...e, IngredientsDictionary]);
 
     const isDuplicate = fullIngredientDetails.includes(IngredientsDictionary);
 
@@ -54,8 +50,6 @@ export default function Ingredients({
         IngredientsDictionary,
       ]);
     }
-
-    // console.log("ff", fullIngredientDetails);
   };
 
   const handleXClick = (procedure) => {

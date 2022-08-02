@@ -4,22 +4,47 @@ import { useDispatch } from "react-redux";
 
 // import { addProcedures } from "../../../redux/actions/forms";
 
-export default function Instructions({ addUserInstructions }) {
+export default function Instructions({ handleAddInstructions }) {
   let textInput = createRef();
+
+  const dispatch = useDispatch();
+
+  // const [procedures, setProcedures] = useState([]);
 
   const [inputValue, setInputValue] = useState("");
 
-  const onInputInstructionsChange = useCallback(
+  useCallback(
     (e) => {
-      setInputValue(e.target.key);
+      handleAddInstructions(inputValue);
     },
-    [setInputValue]
+    [handleAddInstructions]
   );
 
-  const handleAddInstructions = useCallback(async () => {
-    await addUserInstructions(inputValue);
-    setInputValue("");
-  }, [inputValue]);
+  // useEffect(() => {
+  //   if (recipe && editMode === true) {
+  //     const defaultProcedures = JSON.parse(recipe[0].procedure);
+
+  //     defaultProcedures.map((defaultProcedure) =>
+  //       setProcedures((e) => [...e, defaultProcedure])
+  //     );
+  //   }
+  // }, []);
+
+  // useEffect(() => {
+  //   dispatch(addProcedures(procedures));
+  // }, [procedures]);
+
+  // const onInputInstructionsChange = useCallback(
+  //   (e) => {
+  //     setInputValue(e.target.key);
+  //   },
+  //   [setInputValue]
+  // );
+
+  // const handleAddInstructions = useCallback(async () => {
+  //   await addCategory(inputValue);
+  //   setSelectCategory("");
+  // }, [inputValue]);
 
   return (
     <>
@@ -41,8 +66,9 @@ export default function Instructions({ addUserInstructions }) {
                     placeholder="Add two spoons of sugar..."
                     ref={textInput}
                     value={inputValue}
-                    onSubmit={handleAddInstructions}
-                    onChange={onInputInstructionsChange}
+                    // onSubmit={handleAddInstructions}
+                    // onChange={onInputInstructionsChange}
+                    onChange={(e) => setInputValue(e.target.value)}
                   />
                 </div>
               </div>

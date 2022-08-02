@@ -1,10 +1,6 @@
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import {
-  addUserMeasurement,
-  addUserQuantity,
-  addUserIngredient,
-} from "../../../../app/actions/form-actions";
+import { addIngredients } from "../../../../app/actions/form-actions";
 import {
   getChosenQuantity,
   getChosenMeasurement,
@@ -27,9 +23,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return bindActionCreators(
     {
-      addUserMeasurement,
-      addUserQuantity,
-      addUserIngredient,
+      addIngredients,
     },
     dispatch
   );

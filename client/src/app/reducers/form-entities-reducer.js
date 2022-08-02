@@ -1,12 +1,13 @@
 import actions from "../actions/constants";
 
 const initialState = {
-  ingredient: "",
+  ingredients: [],
   measurement: "",
   quantity: "",
   procedures: [],
   cook_time: "",
   categoriesList: [],
+  instructions: "",
   category: "",
   picture: [],
   recipeList: [],
@@ -18,33 +19,24 @@ const formEntitiesReducer = (state = initialState, action) => {
       const recipeInput = [...state.recipeList, action.item];
       return { ...state, recipeList: recipeInput };
 
-    case actions.ADD_INGREDIENT:
+    case actions.ADD_INGREDIENTS:
+      console.log("state", action);
       return {
         ...state,
-        ingredient: action.ADD_INGREDIENT,
-      };
-    case actions.ADD_MEASUREMENT:
-      return {
-        ...state,
-        measurement: action.ADD_MEASUREMENT,
+        ingredients: action.ingredients,
       };
 
-    case actions.ADD_QUANTITY:
+    case actions.ADD_INSTRUCTIONS:
       return {
         ...state,
-        quantity: action.ADD_QUANTITY,
+        instructions: action.instructions,
+      };
+    case actions.ADD_COOK_TIME:
+      return {
+        ...state,
+        cook_time: action.ADD_COOK_TIME,
       };
 
-    case actions.ADD_INSTRUCTION:
-      return {
-        ...state,
-        instructions: action.ADD_INSTRUCTION,
-      };
-    case actions.ADD_COOKTIME:
-      return {
-        ...state,
-        cook_time: action.ADD_COOKTIME,
-      };
     case actions.ADD_CATEGORY:
       console.log("state", action);
       return {
@@ -53,10 +45,6 @@ const formEntitiesReducer = (state = initialState, action) => {
       };
 
     case actions.GET_CATEGORIES:
-      // console.log("action", action);
-      // const categoriesList = action.categories;
-      // console.log("categoriessss", categoriesList);
-
       return {
         ...state,
         categoriesList: action.categories,

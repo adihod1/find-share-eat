@@ -1,25 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useDispatch } from "react-redux";
 
 // import { addCooktime } from "../../../redux/actions/forms";
 
-export default function ChooseTime({ editMode, recipe }) {
+export default function ChooseTime({ handleAddTime }) {
   const dispatch = useDispatch();
 
-  let defaultCookTime;
+  const [hours, setHours] = useState("00");
+  const [minutes, setMinutes] = useState("00");
+  const [seconds, setSeconds] = useState("00");
 
-  if (editMode) {
-    defaultCookTime = recipe[0].cook_time.split(":");
-  }
-
-  const [hours, setHours] = useState(editMode ? defaultCookTime[0] : "00");
-  const [minutes, setMinutes] = useState(editMode ? defaultCookTime[1] : "00");
-  const [seconds, setSeconds] = useState(editMode ? defaultCookTime[2] : "00");
-
-  // useEffect(() => {
-  //   const cook_time = `${hours}:${minutes}:${seconds}`;
-  //   dispatch(addCooktime(cook_time));
-  // }, [hours, minutes, seconds]);
+  useCallback(() => {
+    const cook_time = `${hours}:${minutes}:${seconds}`;
+    handleAddTime(cook_time);
+  }, [handleAddTime]);
 
   return (
     <div>
