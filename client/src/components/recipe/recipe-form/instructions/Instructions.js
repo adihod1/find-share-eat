@@ -1,8 +1,4 @@
-import { useState, useEffect, createRef, useCallback } from "react";
-import { useDispatch } from "react-redux";
-// import { MinusIcon, PlusIcon } from "@heroicons/react/solid";
-
-// import { addProcedures } from "../../../redux/actions/forms";
+import { createRef } from "react";
 
 export default function Instructions({
   handleAddFullInstructions,

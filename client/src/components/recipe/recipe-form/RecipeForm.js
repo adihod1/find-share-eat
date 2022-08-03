@@ -21,6 +21,7 @@ export default function RecipeForm({
   const [hours, setHours] = useState("00");
   const [minutes, setMinutes] = useState("00");
   const [seconds, setSeconds] = useState("00");
+  const [fullHour, setFullHour] = useState("00");
   const [inputInstructions, setInputInstructions] = useState("");
   const [fullIngredientDetails, setFullIngredientDetails] = useState([]);
   const [inputValue, setInputValue] = useState("");
@@ -36,10 +37,9 @@ export default function RecipeForm({
   }, [inputInstructions]);
 
   const handleAddTime = useCallback(() => {
-    addCookTime(cookTime);
-  }, [cookTime]);
+    addCookTime(`${hours}:${minutes}:${seconds}`);
+  }, [`${hours}:${minutes}:${seconds}`]);
 
-  const cookTime = `${hours}:${minutes}:${seconds}`;
   const userId = userValue.id;
 
   const onInputTitleChange = useCallback(
@@ -74,9 +74,6 @@ export default function RecipeForm({
     setInputValue("");
   };
   console.log("inst", userIngredients);
-  const printRecipe = () => {
-    window.print();
-  };
   return (
     <div>
       <form className="column center" onSubmit={handleFormSubmit}>
