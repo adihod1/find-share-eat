@@ -26,6 +26,9 @@ module.exports = {
       categoryId: {
         type: Sequelize.INTEGER,
       },
+      numberOfLikes: {
+        type: Sequelize.INTEGER,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
