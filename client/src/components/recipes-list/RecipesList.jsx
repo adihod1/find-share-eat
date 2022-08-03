@@ -23,6 +23,10 @@ const RecipesList = ({ fetchRecipesAction, recipesValue }) => {
 
     const [chosenRecipe, setChosenRecipe] = useState({})
 
+    const printRecipe = () => {
+        window.print();
+      };
+
     useEffect(() => {
         fetchRecipesAction()
     }, [])
@@ -38,6 +42,7 @@ const RecipesList = ({ fetchRecipesAction, recipesValue }) => {
                     <div className={'modal-container'}>
                         <img src={`${BUCKET_URL}${chosenRecipe.image}`} className={`modal-image`} />
                         <p className={'modal-description'}>{chosenRecipe.instructions}</p>
+                        <button className="button-print-recipe" onClick={printRecipe}>Print Recipe</button>
                     </div>
                 </Modal.Body>
             </Modal>
