@@ -1,9 +1,5 @@
-import { useState, useEffect, createRef, useCallback } from "react";
-import { useDispatch } from "react-redux";
+import { useState, createRef } from "react";
 import filterMeasurements from "./filterMeasurements";
-// import { MinusIcon, PlusIcon } from "@heroicons/react/solid";
-
-// import { addProcedures } from "../../../redux/actions/forms";
 
 export default function Ingredients({
   handleAddIngredients,
@@ -73,9 +69,7 @@ export default function Ingredients({
         <div className="containter">
           <div>
             <h1 className="title">Ingredients</h1>
-            {/* <p>Fill in the ingredients to create your new recipe.</p> */}
           </div>
-
           <div>
             <div>
               <div className="flex">
@@ -120,11 +114,6 @@ export default function Ingredients({
                     <span>Add</span>
                   </button>
                 </div>
-                {/* <div className="recipe-button">
-                  <button type="button" onClick={handleClick}>
-                    <span>Add</span>
-                  </button>
-                </div> */}
               </div>
             </div>
             <div>

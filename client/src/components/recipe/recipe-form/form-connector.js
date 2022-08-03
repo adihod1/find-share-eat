@@ -22,7 +22,13 @@ const mapStateToProps = (state, ownProps) => {
   const userIngredients = getChosenIngredients(state);
   const userInstructions = getUserInstructions(state);
   const userCookingTime = getUserCookTime(state);
-  console.log({ userValue, userCategory, userIngredients });
+  console.log({
+    userValue,
+    userCategory,
+    userIngredients,
+    userInstructions,
+    userCookingTime,
+  });
   return {
     userValue,
     userCategory,

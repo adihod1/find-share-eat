@@ -18,39 +18,29 @@ export default function RecipeForm({
   userCookingTime,
   addCookTime,
 }) {
+  const [hours, setHours] = useState("00");
+  const [minutes, setMinutes] = useState("00");
+  const [seconds, setSeconds] = useState("00");
+  const [inputInstructions, setInputInstructions] = useState("");
   const [fullIngredientDetails, setFullIngredientDetails] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [inputTitle, setInputTitle] = useState("");
   const [inputDescription, setInputDescription] = useState("");
 
-  // recipe: inputValue, ingredients: [{"h"}]
-
   const handleAddIngredients = useCallback(() => {
     addIngredients(fullIngredientDetails);
-    console.log("blabla");
-    // setSelectCategory("");
   }, [fullIngredientDetails]);
 
-  const handleAddInstructions =
-    ((instructions) => {
-      addInstructions(instructions);
-      console.log("blabla");
-      // setSelectCategory("");
-    },
-    [addInstructions]);
+  const handleAddInstructions = useCallback(() => {
+    addInstructions(inputInstructions);
+  }, [inputInstructions]);
 
-  const handleAddTime =
-    ((time) => {
-      addCookTime(time);
-      console.log("blabla");
-      // setSelectCategory("");
-    },
-    [addCookTime]);
+  const handleAddTime = useCallback(() => {
+    addCookTime(cookTime);
+  }, [cookTime]);
 
+  const cookTime = `${hours}:${minutes}:${seconds}`;
   const userId = userValue.id;
-  console.log("category", userCategory);
-
-  console.log("userrrr", userValue.id);
 
   const onInputTitleChange = useCallback(
     (e) => {
@@ -68,6 +58,8 @@ export default function RecipeForm({
 
   const handleFormSubmit = () => {
     handleAddIngredients();
+    handleAddInstructions();
+    handleAddTime();
     console.log("add recipe");
     addUserRecipe(userId, {
       recipe: {
@@ -81,7 +73,7 @@ export default function RecipeForm({
     });
     setInputValue("");
   };
-
+  console.log("inst", userIngredients);
   const printRecipe = () => {
     window.print();
   };
@@ -122,8 +114,19 @@ export default function RecipeForm({
               handleAddIngredients={setFullIngredientDetails}
               fullIngredientDetails={fullIngredientDetails}
             />
-            <Instructions handleAddInstructions={handleAddInstructions} />
-            <ChooseTime handleAddTime={handleAddTime} />
+            <Instructions
+              handleAddFullInstructions={setInputInstructions}
+              fullInstructions={inputInstructions}
+            />
+            <ChooseTime
+              // handleAddTime={handleAddTime}
+              handleAddHours={setHours}
+              handleAddMinutes={setMinutes}
+              handleAddSeconds={setSeconds}
+              fullHour={hours}
+              fullMinutes={minutes}
+              fullSeconds={seconds}
+            />
             {/* <PictureUpload />  */}
             <input className="send-recipe" type="submit" value="Submit" />
           </div>
