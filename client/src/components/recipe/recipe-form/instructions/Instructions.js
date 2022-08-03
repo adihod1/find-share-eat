@@ -52,7 +52,7 @@ export default function Instructions({ handleAddInstructions }) {
         <div className="containter">
           <div>
             <h1 className="title">Procedures</h1>
-            <p>Fill in the procedures to create your new recipe.</p>
+            {/* <p>Fill in the procedures to create your new recipe.</p> */}
           </div>
 
           <div>

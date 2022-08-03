@@ -17,8 +17,8 @@ export default function ChooseTime({ handleAddTime }) {
 
   return (
     <div>
-      <h1 className="title">Cook Time</h1>
-      <p>How long is it going to take to cook?</p>
+      <h1 className="title">Cooking Time</h1>
+      {/* <p>How long is it going to take to cook?</p> */}
       <div>
         <div className="flex">
           <select name="hours" onChange={(e) => setHours(e.target.value)}>

@@ -78,7 +78,7 @@ export default function Ingredients({ handleAddIngredients }) {
         <div className="containter">
           <div>
             <h1 className="title">Ingredients</h1>
-            <p>Fill in the ingredients to create your new recipe.</p>
+            {/* <p>Fill in the ingredients to create your new recipe.</p> */}
           </div>
 
           <div>
@@ -117,12 +117,19 @@ export default function Ingredients({ handleAddIngredients }) {
                     value={inputIngredient}
                     onChange={(e) => setInputIngredient(e.target.value)}
                   />
-                </div>
-                <div className="recipe-button">
-                  <button type="button" onClick={handleClick}>
+                  <button
+                    className="button-recipe"
+                    type="button"
+                    onClick={handleClick}
+                  >
                     <span>Add</span>
                   </button>
                 </div>
+                {/* <div className="recipe-button">
+                  <button type="button" onClick={handleClick}>
+                    <span>Add</span>
+                  </button>
+                </div> */}
               </div>
             </div>
             <div>

@@ -27,7 +27,7 @@ function Category({getCategories, categoriesList, addCategory }) {
   return (
     <div>
     <h1 className="title">Category</h1>
-    <p>please choose a category.</p>
+    {/* <p>please choose a category.</p> */}
     <select 
     id="category"
     name="category"

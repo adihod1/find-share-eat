@@ -3,6 +3,7 @@ import './sidebar.scss'
 import { Link } from 'react-router-dom';
 import { FaBookmark, FaCloudsmith, FaSignOutAlt, FaUser, FaShareSquare } from "react-icons/fa";
 import findShareEatLogo from "../../images/findShareEatLogo.png";
+import penguinIcon from "../../images/penguinIcon.png";
 
 function Sidebar({ userValue, userLogoutAction }) {
     return (
@@ -46,6 +47,7 @@ function Sidebar({ userValue, userLogoutAction }) {
                     </div>
                 </Link>
             </div>
+        <img className="penguin-img" src={penguinIcon} alt="logo" />
         </div>
     )
 }

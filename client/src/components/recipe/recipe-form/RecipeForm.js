@@ -1,7 +1,5 @@
 import cupcakeIcon from "../../../images/cupcakeIcon.png";
 import { useCallback, useState, useEffect } from "react";
-import findShareEatLogo from "../../../images/findShareEatLogo.png";
-import penguinIcon from "../../../images/penguinIcon.png";
 import ChooseTime from "./time/ChooseTime";
 import Ingredients from "./ingredients/Ingredients";
 import Category from "./category/category-connector";
@@ -89,18 +87,8 @@ export default function RecipeForm({
   };
   return (
     <div>
-      {/* <div className="sideTitle">
-        <img className="logo-img" src={findShareEatLogo} alt="logo" />
-        <h1 className="font">TIME</h1>
-        <h1 className="font">TO</h1>
-        <h1 className="font">COOK</h1>
-        <img className="penguin-img" src={penguinIcon} alt="logo" />
-      </div> */}
-
-      <form onSubmit={handleFormSubmit}>
-        <div>
-          {/* <button type="submit">{props.buttonLabel}</button> */}
-          <input type="submit" value="Submit" />
+      <form className="column center" onSubmit={handleFormSubmit}>
+        <div className="wrapper">
           {/* <button onClick={printRecipe}>Print Recipe</button> */}
         </div>
         <div>
@@ -138,12 +126,16 @@ export default function RecipeForm({
             />
             <ChooseTime handleAddTime={(event) => handleAddTime(event)} />
             {/* <PictureUpload />  */}
+            <input className="send-recipe" type="submit" value="Submit" />
           </div>
         </div>
       </form>
 
-      <div className="cupcake-img">
-        <img src={cupcakeIcon} alt="cupcake" />
+      <div className="column">
+        <h1 className="font">TIME</h1>
+        <h1 className="font">TO</h1>
+        <h1 className="font">COOK</h1>
+        <img className="cupcake-img" src={cupcakeIcon} alt="cupcake" />
       </div>
     </div>
   );
