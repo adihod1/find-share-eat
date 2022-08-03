@@ -16,7 +16,7 @@ const initialState = {
 const formEntitiesReducer = (state = initialState, action) => {
   switch (action.type) {
     case actions.CREATE_RECIPE:
-      const recipeInput = [...state.recipeList, action.item];
+      const recipeInput = [...state.recipeList, action.recipe];
       return { ...state, recipeList: recipeInput };
 
     case actions.ADD_INGREDIENTS:

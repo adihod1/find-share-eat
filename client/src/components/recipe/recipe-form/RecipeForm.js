@@ -18,19 +18,18 @@ export default function RecipeForm({
   userCookingTime,
   addCookTime,
 }) {
+  const [fullIngredientDetails, setFullIngredientDetails] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [inputTitle, setInputTitle] = useState("");
   const [inputDescription, setInputDescription] = useState("");
 
   // recipe: inputValue, ingredients: [{"h"}]
 
-  const handleAddIngredients =
-    ((ingredients) => {
-      addIngredients(ingredients);
-      console.log("blabla");
-      // setSelectCategory("");
-    },
-    [addIngredients]);
+  const handleAddIngredients = useCallback(() => {
+    addIngredients(fullIngredientDetails);
+    console.log("blabla");
+    // setSelectCategory("");
+  }, [fullIngredientDetails]);
 
   const handleAddInstructions =
     ((instructions) => {
@@ -67,7 +66,8 @@ export default function RecipeForm({
     [setInputDescription]
   );
 
-  const handleFormSubmit = useCallback(() => {
+  const handleFormSubmit = () => {
+    handleAddIngredients();
     console.log("add recipe");
     addUserRecipe(userId, {
       recipe: {
@@ -80,7 +80,7 @@ export default function RecipeForm({
       ingredients: userIngredients,
     });
     setInputValue("");
-  }, [addUserRecipe]);
+  };
 
   const printRecipe = () => {
     window.print();
@@ -119,12 +119,11 @@ export default function RecipeForm({
             </div>
             <Category />
             <Ingredients
-              handleAddIngredients={(event) => handleAddIngredients(event)}
+              handleAddIngredients={setFullIngredientDetails}
+              fullIngredientDetails={fullIngredientDetails}
             />
-            <Instructions
-              handleAddInstructions={(event) => handleAddInstructions(event)}
-            />
-            <ChooseTime handleAddTime={(event) => handleAddTime(event)} />
+            <Instructions handleAddInstructions={handleAddInstructions} />
+            <ChooseTime handleAddTime={handleAddTime} />
             {/* <PictureUpload />  */}
             <input className="send-recipe" type="submit" value="Submit" />
           </div>

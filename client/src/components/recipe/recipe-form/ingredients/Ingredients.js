@@ -5,20 +5,18 @@ import filterMeasurements from "./filterMeasurements";
 
 // import { addProcedures } from "../../../redux/actions/forms";
 
-export default function Ingredients({ handleAddIngredients }) {
+export default function Ingredients({
+  handleAddIngredients,
+  fullIngredientDetails,
+}) {
   let quantityInput = createRef();
   let measurementInput = createRef();
   let ingredientInput = createRef();
 
-  const [fullIngredientDetails, setFullIngredientDetails] = useState([]);
   const [procedures, setProcedures] = useState([]);
   const [inputQuantity, setInputQuantity] = useState("");
   const [inputMeasurement, setInputMeasurement] = useState("");
   const [inputIngredient, setInputIngredient] = useState("");
-
-  useCallback(() => {
-    handleAddIngredients(fullIngredientDetails);
-  }, [handleAddIngredients]);
 
   console.log("handle", typeof handleAddIngredients);
   const handleClick = () => {
@@ -45,10 +43,7 @@ export default function Ingredients({ handleAddIngredients }) {
     const isDuplicate = fullIngredientDetails.includes(IngredientsDictionary);
 
     if (!isDuplicate) {
-      setFullIngredientDetails([
-        ...fullIngredientDetails,
-        IngredientsDictionary,
-      ]);
+      handleAddIngredients([...fullIngredientDetails, IngredientsDictionary]);
     }
   };
 
@@ -58,7 +53,7 @@ export default function Ingredients({ handleAddIngredients }) {
     const [amount, measurement, ingredientName] = stringToArr;
     const stringToObject = { amount, measurement, ingredientName };
     console.log(stringToObject);
-    setFullIngredientDetails((current) =>
+    handleAddIngredients((current) =>
       current.filter((fullIngredient) => {
         return (
           fullIngredient.amount !== stringToObject.amount &&
