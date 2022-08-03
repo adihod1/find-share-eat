@@ -1,5 +1,5 @@
-const {User, Recipe, Ingredient, UsersRecipes, Category, sequelize} = require("../db/models");
 const {
+  User,
   Recipe,
   Ingredient,
   UsersRecipes,
