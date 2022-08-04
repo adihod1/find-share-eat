@@ -1,10 +1,31 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './recipe.scss'
 import clockIcon from '../../images/timeIcon.png'
 import FavoriteIcon from '../../images/saveToProfileIcon.png'
 import likeIcon from '../../images/likeIcon.png'
 
-function Recipe({ recipe, openModal, baseUrl }) {
+function Recipe({ recipe, openModal, baseUrl, addLikeToRecipe, removeLikeToRecipe, userValue }) {
+    // const [addLike, setaddLike] = useState([]);
+    // const [removeLike, setremoveLike] = useState([]);
+  const userId = userValue.id;
+
+
+    const handleAddLike = () => {
+        console.log("add like");
+        addLikeToRecipe(userId, {
+
+            recipeId: 'inputTitle',
+        });
+      };
+    
+    const handleremoveLike = () => {
+    console.log("add like");
+    removeLikeToRecipe(userId, {
+
+        recipeId: 'inputTitle',
+    });
+    };
+    
 
     return (
         <div className={"recipe-container"}>

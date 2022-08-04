@@ -1,3 +1,3 @@
-const getLikeEntities = (state) => state.likeEntities;
+const getLikeEntities = (state) => state.likeEntitiesReducer;
 
 export const getLikeList = (state) => getLikeEntities(state).likeList;
