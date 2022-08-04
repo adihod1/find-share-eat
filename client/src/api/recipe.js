@@ -12,8 +12,16 @@ export default class RecipeClient extends ApiBase {
     }
 
     // GET
-    async fetchRecipes() {
-        return await this._get('/get-all-recipes')
+    async fetchRecipes(filters) {
+        console.log('filters', filters)
+
+        const queryString = objectToQuerystring(filters);
+        console.log(queryString)
+        try {
+            return await this._get(`/get-all-recipes${queryString}`)
+        } catch (error) {
+            return this._handleFailure(error);
+        }
     }
 
     async fetchRecipesByUserId(userId) {

@@ -11,6 +11,12 @@ router.get("/get-ingredients", async (_, res, next) => {
     }, next);
 });
 
+router.get("/get-ingredients-name", async (_, res, next) => {
+    errWrapper(async () => {
+        res.status(200).json(await ingredientManager.getIngredientsName());
+    }, next);
+});
+
 // PUT
 router.put("/edit-ingredient/:ingredientId", ingredientIdValidator, async (req, res, next) => {
     errWrapper(async () => {
