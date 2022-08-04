@@ -1,9 +1,15 @@
-const { Like } = require("../db/models");
+const { Like, Recipe } = require("../db/models");
 const recipe = require("../db/models/recipe");
 
 class LikeManager {
   addLike = async (id, data) => {
     await Like.create({ recipeId: data.recipeId, userId: id });
+    this.getNumberOfLikesByRecipe(data.recipeId);
+  };
+
+  deleteLike = async (id, data) => {
+    await Like.destroy({ where: { userId: id } });
+    this.getNumberOfLikesByRecipe(data.recipeId);
   };
 
   getNumberOfLikesByRecipe = async (recipeId) => {
@@ -11,7 +17,10 @@ class LikeManager {
       where: { recipeId: recipeId },
     });
 
-    console.log(count); // 2
+    await Recipe.update(
+      { numberOfLikes: numberOfLikes },
+      { where: { id: recipeId } }
+    );
     // recipe.countLike()
   };
 }

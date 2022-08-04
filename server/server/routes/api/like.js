@@ -13,4 +13,12 @@ router.post("/add-like/:userId", likeValidator, (req, res, next) => {
   }, next);
 });
 
+router.delete("/delete-like/:userId", likeValidator, async (req, res, next) => {
+  errWrapper(async () => {
+    res
+      .status(200)
+      .json(await likeManager.deleteLike(req.params.userId, req.body));
+  }, next);
+});
+
 module.exports = router;
