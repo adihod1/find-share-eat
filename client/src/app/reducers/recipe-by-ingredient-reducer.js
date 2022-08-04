@@ -1,7 +1,7 @@
 import actionTypes from "../actions/constants";
 
 const initialState = {
-    array: [],
+    selected: [],
     ingredients: []
 };
 
@@ -9,12 +9,15 @@ const recipeByIngredientReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case actionTypes.INGREDIENT_VALUE: {
-            return {...state, array: action.array};
+            return {...state, selected: action.selected};
         }
 
         case actionTypes.FETCHED_INGREDIENTS: {
-            const mapped = action.ingredients.map(ing => ({label: ing.ingredientName, value: ing.ingredientName}))
-            return {ingredients: mapped, array: mapped};
+            const allIngredients = action.ingredients.map(ing => ({
+                label: ing.ingredientName,
+                value: ing.ingredientName
+            }))
+            return {ingredients: allIngredients, selected: []};
         }
 
         default:

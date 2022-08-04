@@ -1,14 +1,14 @@
 import actionsTypes from "./constants";
 import {getAllIngredients} from "../middlewares/recipe-list-middleware";
 
-const ingredientValue = (array) => ({
+const ingredientValue = (selected) => ({
     type: actionsTypes.INGREDIENT_VALUE,
-    array
+    selected
 });
 
-export const setRecipeByIngredientAction = (array) => {
+export const setRecipeByIngredientAction = (selected) => {
     return dispatch => {
-        dispatch(ingredientValue(array));
+        dispatch(ingredientValue(selected));
     };
 };
 

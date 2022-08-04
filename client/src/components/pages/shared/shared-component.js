@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, {useEffect} from 'react'
 import RecipesList from '../../recipes-list/recipe-list-connector'
 
 function Saved({ fetchRecipesByUserIdAction, recipesValue, user }) {
@@ -11,7 +11,7 @@ function Saved({ fetchRecipesByUserIdAction, recipesValue, user }) {
 
     return (
         <div className={"home-container"}>
-            {recipesValue?.Recipes?.length > 0 && <RecipesList recipes={recipesValue.Recipes} />}
+            {<RecipesList recipes={recipesValue.Recipes}/>}
         </div>
     )
 }

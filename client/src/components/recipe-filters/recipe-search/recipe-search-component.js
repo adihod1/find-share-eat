@@ -23,7 +23,7 @@ const RecipeSearch = ({setRecipeSearchAction}) => {
     return (
         <div className="recipe-search">
             <input onChange={onRecipeInputChange} id="recipe-search" type="text"
-                   placeholder="Search..." value={search}></input>
+                   placeholder="  search recipe name..." value={search}></input>
         </div>
     );
 };

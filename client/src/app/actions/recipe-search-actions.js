@@ -11,9 +11,6 @@ const badInputSearchRecipe = () => ({
 
 export const setRecipeSearchAction = (input) => {
     return dispatch => {
-        if (!input?.trim().length) {
-            return dispatch(badInputSearchRecipe(input));
-        }
         dispatch(searchRecipe(input));
     };
 };

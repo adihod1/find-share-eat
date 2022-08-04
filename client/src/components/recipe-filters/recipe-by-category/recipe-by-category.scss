@@ -1,16 +1,13 @@
 
-.select-sort {
-  width: 100px;
-  height: 40px;
+.select-category {
+  width: 400px;
   margin-top: 20px;
   margin-left: 10px;
   font-size: 14px;
 }
 
-.select-sort div:nth-child(3) {
-  height: 38px;
+.select-category div:nth-child(3) {
   border-radius: 10px;
   border-color: #f9c368;
   color: #855400;
-  text-align: center;
 }

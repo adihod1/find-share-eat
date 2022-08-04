@@ -10,7 +10,7 @@ function Home({fetchRecipesAction, recipesValue}) {
 
     return (
         <div className={"home-container"}>
-            {recipesValue.length > 0 && <RecipesList recipes={recipesValue}/>}
+            <RecipesList recipes={recipesValue}/>
         </div>
     );
 
