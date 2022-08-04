@@ -17,6 +17,7 @@ function Recipe({ recipe, openModal, baseUrl }) {
                 </div>
                 <div className={'recipe-buttons-container'}>
                     <img className="icon" alt="favorite" src={FavoriteIcon}></img>
+                    <p>{recipe.numberOfLikes}</p>
                     <img className="icon" alt="like" src={likeIcon}></img>
                 </div>
             </div>

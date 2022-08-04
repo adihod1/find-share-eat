@@ -1,17 +1,17 @@
-import { recipeCategory, addRecipe } from "../middlewares/form-middleware";
+import { addUserLike, removeUserLike } from "../middlewares/like-middleware";
 
 import actions from "./constants";
 
-export const addLikeToRecipe = (id, recipe) => {
+export const addLikeToRecipe = (UserId, recipeId) => {
   return (dispatch) => {
-    const createRecipe = addRecipe(id, recipe);
-    dispatch(createRecipe);
+    const addLike = addUserLike(UserId, recipeId);
+    dispatch(addLike);
   };
 };
 
-export const removeLikeToRecipe = (id, recipe) => {
+export const removeLikeToRecipe = (UserId, recipeId) => {
   return (dispatch) => {
-    const createRecipe = addRecipe(id, recipe);
-    dispatch(createRecipe);
+    const removeLike = removeUserLike(UserId, recipeId);
+    dispatch(removeLike);
   };
 };
