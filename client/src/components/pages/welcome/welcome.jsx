@@ -1,6 +1,7 @@
 import React from 'react'
 import './welcome.scss'
-import Logo from '../../../images/findShareEatLogo.png'
+// import Logo from '../../../images/findShareEatLogo.png'
+import Logo from '../../../images/LOGO.png'
 import Sharing from '../../../images/welcomeSharingIcon.png'
 import Find from '../../../images/welcomeFindIcon.png'
 import Login from "../login/login-connector";
