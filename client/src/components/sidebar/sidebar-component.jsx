@@ -2,7 +2,7 @@ import React from 'react'
 import './sidebar.scss'
 import { Link } from 'react-router-dom';
 import { FaBookmark, FaCloudsmith, FaSignOutAlt, FaUser, FaShareSquare } from "react-icons/fa";
-import findShareEatLogo from "../../images/findShareEatLogo.png";
+import findShareEatLogo from "../../images/LOGO.png";
 import penguinIcon from "../../images/penguinIcon.png";
 
 function Sidebar({ userValue, userLogoutAction }) {
