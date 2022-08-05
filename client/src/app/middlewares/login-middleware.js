@@ -26,6 +26,5 @@ export function userLogin(user) {
             //todo dispatch type login error
         }
         spinner(dispatch, false)
-
     }
 }

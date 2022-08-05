@@ -8,12 +8,17 @@ export default class RecipeClient extends ApiBase {
 
   // POST
   async addRecipe(userId, recipe) {
-    await this._post(`/add-recipe/${userId}`, recipe);
+    await this._post(`/add-recipe/${userId}`, JSON.stringify(recipe));
   }
 
   // GET
-  async fetchRecipes() {
-    return await this._get("/get-all-recipes");
+  async fetchRecipes(filters) {
+    const queryString = objectToQuerystring(filters);
+    try {
+      return await this._get(`/get-all-recipes${queryString}`);
+    } catch (error) {
+      return this._handleFailure(error);
+    }
   }
 
   async fetchRecipesByUserId(userId) {

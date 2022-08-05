@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import RecipesList from '../../recipes-list/recipe-list-connector'
 
-function Saved({ fetchRecipesByUserIdAction, recipesValue, user }) {
+function Shared({ fetchRecipesByUserIdAction, recipesValue, user }) {
 
     useEffect(() => {
         if (user && user?.id) {
@@ -11,9 +11,9 @@ function Saved({ fetchRecipesByUserIdAction, recipesValue, user }) {
 
     return (
         <div className={"home-container"}>
-            {recipesValue?.Recipes?.length > 0 && <RecipesList recipes={recipesValue.Recipes} />}
+            {recipesValue && <RecipesList recipes={recipesValue.Recipes} showFilter={false} />}
         </div>
     )
 }
 
-export default Saved
+export default Shared

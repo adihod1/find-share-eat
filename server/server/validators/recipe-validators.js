@@ -28,6 +28,7 @@ const recipeValidator = validateSchema({
   "recipe.image": {
     isString: true,
     errorMessage: `Missing/Bad recipe.image`,
+    optional: true,
     in: ["body"],
   },
   "recipe.categoryId": {

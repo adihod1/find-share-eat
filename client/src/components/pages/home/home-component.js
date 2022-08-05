@@ -1,6 +1,7 @@
 import "./home.scss";
 import React, { useEffect } from "react";
-import RecipesList from '../../recipes-list/recipe-list-connector'
+import RecipesList from '../../recipes-list/recipe-list-connector';
+import UploadImage from "../../uploadImage/upload-image-component";
 
 function Home({ fetchRecipesAction, recipesValue }) {
 
@@ -10,7 +11,7 @@ function Home({ fetchRecipesAction, recipesValue }) {
 
     return (
         <div className={"home-container"}>
-            {recipesValue.length > 0 && <RecipesList recipes={recipesValue} />}
+            <RecipesList recipes={recipesValue} showFilter={true} />
         </div>
     );
 

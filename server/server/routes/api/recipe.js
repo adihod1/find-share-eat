@@ -25,8 +25,22 @@ router.post("/add-recipe/:userId", recipeValidator, (req, res, next) => {
 // GET
 router.get("/get-all-recipes", (req, res, next) => {
   errWrapper(async () => {
-    console.log("json", await recipeManager.getAllRecipes());
-    res.status(200).json(await recipeManager.getAllRecipes());
+    const { search, sort, ingredients, categories } = req.query;
+    const filters = {};
+    if (ingredients?.length) {
+      filters.ingredients = _parseIngredientsQuery(ingredients.split(","));
+    }
+    if (categories?.length) {
+      filters.categories = _parseCategoriesQuery(categories.split(","));
+    }
+    if (search) {
+      filters.search = search;
+    }
+    if (sort) {
+      filters.sort = sort;
+    }
+    const data = await recipeManager.getAllRecipes(filters);
+    res.status(200).json(data);
   }, next);
 });
 
@@ -44,7 +58,6 @@ router.get(
 
 router.get("/get-recipes-by-ingredients", async (req, res, next) => {
   errWrapper(async () => {
-    console.log(req.query.ingredients);
     const ingredients = _parseIngredientsQuery(
       req.query.ingredients.split(",")
     );
@@ -73,7 +86,9 @@ router.get(
     errWrapper(async () => {
       res
         .status(200)
-        .json(await recipeManager.getRecipeByCategory(req.params.categoryName));
+        .json(
+          await recipeManager.getRecipeByCategories(req.params.categoryName)
+        );
     }, next);
   }
 );
@@ -118,6 +133,10 @@ router.delete(
 
 function _parseIngredientsQuery(query) {
   return query.map((ingredientName) => ({ ingredientName }));
+}
+
+function _parseCategoriesQuery(query) {
+  return query.map((categoryName) => ({ categoryName }));
 }
 
 module.exports = router;

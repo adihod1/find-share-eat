@@ -23,14 +23,61 @@ class RecipeManager {
     await recipe.addUser(userRow, { through: UsersRecipes });
   };
 
-  getAllRecipes = async () => {
-    const recipes = await Recipe.findAll({
-      include: [
-        { model: Ingredient, as: "Ingredients" },
-        { model: Like, as: "Likes" },
-      ],
-    });
-    return recipes;
+  // getAllRecipes = async () => {
+  //   const recipes = await Recipe.findAll({
+  //     include: [
+  //       { model: Ingredient, as: "Ingredients" },
+  //       { model: Like, as: "Likes" },
+  //     ],
+  //   });
+  //   return recipes;
+  getAllRecipes = async (filters) => {
+    const options = {};
+
+    //sort
+    const sortOrder = filters.sort == "ASC" ? filters.sort : "DESC";
+    options.order = [["recipeName", sortOrder ? sortOrder : "ASC"]];
+
+    //search
+    if (filters.search) {
+      options.where = {
+        [Op.and]: [{ recipeName: { [Op.like]: `%${filters.search}%` } }],
+      };
+    }
+
+    if (filters.ingredients?.length) {
+      options.where = options.where || {};
+      options.where[Op.or] = options.where[Op.or] || [];
+      options.where[Op.or].push(
+        ...(await _getUniqueIngredients(
+          filters.ingredients,
+          this.getRecipeByIngredients.bind(this),
+          "ingredientName"
+        ))
+      );
+    }
+
+    if (filters.categories?.length) {
+      options.where = options.where || {};
+      options.where[Op.or] = options.where[Op.or] || [];
+      options.where[Op.or].push(
+        ...(await _getUniqueCategories(
+          filters.categories,
+          this.getRecipeByCategories.bind(this),
+          "categoryName"
+        ))
+      );
+    }
+
+    try {
+      const recipes = await Recipe.findAll({
+        include: [{ model: Ingredient }, { model: Category }],
+        ...options,
+      });
+      return recipes;
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   getRecipeByUser = async (id) => {
@@ -47,10 +94,12 @@ class RecipeManager {
     return recipe;
   };
 
-  getRecipeByCategory = async (category) => {
+  getRecipeByCategories = async (category) => {
     const recipe = await Category.findAll({
       include: [{ model: Recipe, include: { model: Ingredient } }],
-      where: { categoryName: category },
+      where: {
+        [Op.or]: category,
+      },
     });
     return recipe;
   };
@@ -101,10 +150,42 @@ class RecipeManager {
       });
       return true;
     } catch (e) {
-      console.log(e);
+      console.error(e);
       return false;
     }
   };
+}
+
+async function _getUniqueCategories(arr, handler, prop) {
+  const categories = await handler(arr);
+  const relevantIds = new Set();
+  categories.forEach((cat) => {
+    const recipesIds = cat.dataValues.Recipes.map((r) => r.dataValues.id);
+    recipesIds.forEach((id) => relevantIds.add(id));
+  });
+  return [...relevantIds].map((id) => ({ id }));
+}
+
+async function _getUniqueIngredients(arr, handler, prop) {
+  const recipes = await handler(arr);
+  const relevantIds = new Set();
+  const sizeMap = new Map();
+  recipes.forEach((recipe) => {
+    const recipeId = recipe.dataValues.recipeId;
+    const value = recipe.dataValues[prop];
+    const currentArr = sizeMap.get(recipeId);
+
+    if (currentArr) {
+      currentArr.push(value);
+    } else {
+      sizeMap.set(recipeId, [value]);
+    }
+
+    if (sizeMap.get(recipeId).length >= arr.length) {
+      relevantIds.add(recipeId);
+    }
+  });
+  return [...relevantIds].map((id) => ({ id }));
 }
 
 module.exports = new RecipeManager();
