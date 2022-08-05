@@ -2,7 +2,7 @@ import actions from "../actions/constants";
 
 const initialState = {
   isModalOpen: false,
-  isLoggedIn: true,
+  isLoggedIn: false,
   user: null,
 };
 
