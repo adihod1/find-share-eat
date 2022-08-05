@@ -1,0 +1,159 @@
+.sideTitle {
+    // height: 100%;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    width: 338px;
+    background-color: #CB4495;
+}
+
+// img {
+//     height: 640px;
+//     width: 640px;
+//     left: 294px;
+//     top: -170px;
+//     border-radius: 0px;
+
+// }
+
+// .app-container {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     justify-content: center;
+// }
+
+.cupcake-img {
+    display: flex;
+    align-items: center;
+    width: 400px;
+    height: 400px;
+    margin-left: 5%;
+}
+
+.cupcake-img img{
+    height: 400px;
+    width: 400px;
+    // left: 294px;
+    // top: -170px;
+    // border-radius: 0px;
+    margin-left: 49%;
+    margin-top: -99%;
+    display: inline-block;
+}
+
+body {
+    background-color: #BC2680;
+}
+.font {
+    font-family: 'Potta One';
+    font-size: 47px;
+    color: #ffffff;
+    align-items: center;
+    margin-top: 60px;
+}
+
+.logo-img{
+    height: 87px;
+    width: 322px;
+    margin-left: 8px;
+    margin-top: 19px;
+    border-radius: 0px;
+}
+
+h1 {
+    text-align:center;
+}
+
+.penguin-img {
+    height: 264px;
+    width: 215px;
+    margin-left: 34px;
+    margin-top: 52px;
+    border-radius: 0px;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // justify-content: center;
+    overflow: hidden;
+    margin-left: -27%;
+}
+
+.title {
+    // height: 34px;
+    width: 90px;
+    color: #ffffff;
+    font-family: 'Potta One', Times, serif;
+    font-size: 20px;
+    font-weight: 400;
+    // line-height: 47px;
+    letter-spacing: 0em;
+    text-align: -webkit-match-parent;
+}
+
+.wrapper {
+    margin-top: 21px;
+    
+}
+
+.column {
+    float: left;
+    // width: 47%;
+    padding: 10px;
+    height: 300px;
+}
+
+form.center {
+    margin-left: 51px;
+    margin-top: 82px;
+    /* align-items: center; */
+}
+
+.flex {
+    margin-bottom: 20px;
+}
+
+.form {
+    margin-left: 20px;
+}
+
+textarea {
+    font-weight: bolder;
+    margin-bottom: 30px;
+}
+
+textarea#description {
+    font-weight: bolder;
+    margin-bottom: -7px;
+}
+
+select#category {
+    margin-bottom: 30px;
+}
+
+select#description {
+    width: 111px;
+    height: 28px;
+}
+
+
+input {
+    margin-bottom: 30px
+}
+
+button.button-recipe {
+    border-radius: 20px;
+    background-color: #BC2680;
+    border-color: white;
+    margin-left: 14px;
+}
+
+.send-recipe {
+    border-radius: 20px;
+    background-color: #BC2680;
+    border-color: white;
+}
