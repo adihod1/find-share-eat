@@ -12,9 +12,9 @@ class LikeManager {
     this.getNumberOfLikesByRecipe(data.recipeId);
   };
 
-  checkIfUserLiked = async (userId, recipeId) => {
+  checkIfUserLiked = async (userId) => {
     const IsLike = await Like.findAll({
-      where: { userId: userId, recipeId: recipeId },
+      where: { userId: userId },
     });
     return IsLike;
   };
