@@ -4,6 +4,12 @@ const errorHandler = require("./server/middleware/error-handling");
 const cors = require("./server/middleware/cors");
 const logger = require("./server/middleware/logger");
 
+const dotenv = require("dotenv");
+const express = require("express");
+const errorHandler = require("./server/middleware/error-handling");
+const cors = require("./server/middleware/cors");
+const logger = require("./server/middleware/logger");
+
 const ApiRouter = require("./server/routes/api");
 const AuthRouter = require("./server/routes/api/auth");
 const ImageRouter = require("./server/routes/images");

@@ -1,6 +1,6 @@
 import ApiBase from "./api";
 
-export default class IngredientClient extends ApiBase {
+export default class CategoryClient extends ApiBase {
   constructor() {
     super("http://localhost:3001/api/category");
   }

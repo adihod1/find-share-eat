@@ -1,12 +1,17 @@
 import "./home.scss";
-import React from "react";
-import RecipesList from '../../recipes-list/recipe-list-connector'
+import React, { useEffect } from "react";
+import RecipesList from '../../recipes-list/recipe-list-connector';
+import UploadImage from "../../uploadImage/upload-image-component";
 
-function Home() {
+function Home({ fetchRecipesAction, recipesValue }) {
+
+    useEffect(() => {
+        fetchRecipesAction()
+    }, [])
 
     return (
         <div className={"home-container"}>
-            <RecipesList />
+            <RecipesList recipes={recipesValue} showFilter={true} />
         </div>
     );
 

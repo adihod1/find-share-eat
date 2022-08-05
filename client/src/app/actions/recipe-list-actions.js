@@ -1,8 +1,15 @@
-import {fetchRecipes} from "../middlewares/recipe-list-middleware";
+import {fetchRecipes, fetchRecipesByUserId} from "../middlewares/recipe-list-middleware";
 
-export const fetchRecipesAction = () => {
+export const fetchRecipesAction = (filters = {}) => {
     return dispatch => {
-        const fetchRecipesThunk = fetchRecipes();
+        const fetchRecipesThunk = fetchRecipes(filters);
+        dispatch(fetchRecipesThunk)
+    };
+}
+
+export const fetchRecipesByUserIdAction = (userId) => {
+    return dispatch => {
+        const fetchRecipesThunk = fetchRecipesByUserId(userId);
         dispatch(fetchRecipesThunk)
     };
 }

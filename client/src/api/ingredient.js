@@ -2,12 +2,16 @@ import ApiBase from "./api";
 
 export default class IngredientClient extends ApiBase {
     constructor() {
-        super('http://localhost:3001/api/recipe')
+        super('http://localhost:3001/api/ingredient')
     }
 
     // GET
     async fetchIngredients() {
         return await this._get('/get-ingredients')
+    }
+
+    async fetchIngredientsName() {
+        return await this._get('/get-ingredients-name')
     }
 
     // PUT
