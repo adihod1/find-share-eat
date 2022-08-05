@@ -4,6 +4,7 @@ import ChooseTime from "./time/ChooseTime";
 import Ingredients from "./ingredients/Ingredients";
 import Category from "./category/category-connector";
 import Instructions from "./instructions/Instructions";
+import UploadImageComponent from "../../uploadImage/upload-image-component";
 
 import "./RecipeForm.scss";
 
@@ -125,6 +126,7 @@ export default function RecipeForm({
               fullSeconds={seconds}
             />
             {/* <PictureUpload />  */}
+            <UploadImageComponent />
             <input className="send-recipe" type="submit" value="Submit" />
           </div>
         </div>
