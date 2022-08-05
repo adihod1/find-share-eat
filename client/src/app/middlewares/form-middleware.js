@@ -1,16 +1,16 @@
 import actions from "../actions/constants";
-import IngredientClient from "../../api/category";
+import CategoryClient from "../../api/category";
 import RecipeClient from "../../api/recipe";
 import { spinner } from "../actions/spinner-actions";
 
-const ingredientClient = new IngredientClient();
+const categoryClient = new CategoryClient();
 const recipeClient = new RecipeClient();
 
 export function recipeCategory() {
   return async function loadCategoriesListAction(dispatch) {
     try {
       spinner(dispatch, true);
-      const response = await ingredientClient.fetchCategories();
+      const response = await categoryClient.fetchCategories();
       console.log("res", response);
       dispatch({ type: actions.GET_CATEGORIES, categories: response.body });
     } catch (e) {
