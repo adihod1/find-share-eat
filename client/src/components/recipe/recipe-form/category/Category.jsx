@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 
 function Category({getCategories, categoriesList, addCategory }) {
 
-  const [selectCategory, setSelectCategory] = useState("");
+  const [selectCategory, setSelectCategory] = useState('Dessert');
 
   const handleAddCategory = useCallback( (e) => {
     console.log('ssw', categoriesList)

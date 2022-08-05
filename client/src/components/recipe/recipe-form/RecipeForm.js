@@ -60,16 +60,16 @@ export default function RecipeForm({
     handleAddIngredients();
     handleAddInstructions();
     handleAddTime();
-    console.log("add recipe");
+    console.log("add recipe", userInstructions);
     addUserRecipe(userId, {
       recipe: {
         recipeName: inputTitle,
         description: inputDescription,
-        cookingTime: userCookingTime,
-        instructions: userInstructions,
+        cookingTime: `${hours}:${minutes}:${seconds}`,
+        instructions: inputInstructions,
         categoryId: userCategory,
       },
-      ingredients: userIngredients,
+      ingredients: fullIngredientDetails,
     });
     setInputValue("");
   };
