@@ -28,6 +28,7 @@ export default function RecipeForm({
   const [inputValue, setInputValue] = useState("");
   const [inputTitle, setInputTitle] = useState("");
   const [inputDescription, setInputDescription] = useState("");
+  const [imageLink, setImageLink] = useState("");
 
   const handleAddIngredients = useCallback(() => {
     addIngredients(fullIngredientDetails);
@@ -40,6 +41,13 @@ export default function RecipeForm({
   const handleAddTime = useCallback(() => {
     addCookTime(`${hours}:${minutes}:${seconds}`);
   }, [`${hours}:${minutes}:${seconds}`]);
+
+  const handleImageUrl = (url) => {
+    const fixUrl = url.split("/");
+    const lengthUrl = fixUrl.length;
+    setImageLink(fixUrl[lengthUrl - 1]);
+  };
+  console.log("imageee", imageLink);
 
   const userId = userValue.id;
 
@@ -58,16 +66,18 @@ export default function RecipeForm({
   );
 
   const handleFormSubmit = () => {
+    console.log("imageLink", imageLink);
     handleAddIngredients();
     handleAddInstructions();
     handleAddTime();
-    console.log("add recipe", userInstructions);
+    console.log("imageLink2", imageLink);
     addUserRecipe(userId, {
       recipe: {
         recipeName: inputTitle,
         description: inputDescription,
         cookingTime: `${hours}:${minutes}:${seconds}`,
         instructions: inputInstructions,
+        image: imageLink,
         categoryId: userCategory,
       },
       ingredients: fullIngredientDetails,
@@ -78,9 +88,7 @@ export default function RecipeForm({
   return (
     <div>
       <form className="column center" onSubmit={handleFormSubmit}>
-        <div className="wrapper">
-          {/* <button onClick={printRecipe}>Print Recipe</button> */}
-        </div>
+        <div className="wrapper"></div>
         <div>
           <div className="contain">
             <div>
@@ -126,7 +134,7 @@ export default function RecipeForm({
               fullSeconds={seconds}
             />
             {/* <PictureUpload />  */}
-            <UploadImageComponent />
+            <UploadImageComponent handleImage={handleImageUrl} />
             <input className="send-recipe" type="submit" value="Submit" />
           </div>
         </div>
