@@ -15,7 +15,7 @@ function Recipe({ recipe, openModal, baseUrl }) {
             <div className={"recipe-bottom-tab"}>
                 <div className={"time-container"}>
                     <img className="icon" alt="clock" src={clockIcon}></img>
-                    {recipe.cookingTime}
+                    {`Cooking time: ${recipe.cookingTime}`}
                 </div>
                 <div className={'recipe-buttons-container'}>
                     <img className="icon" alt="favorite" src={FavoriteIcon}></img>

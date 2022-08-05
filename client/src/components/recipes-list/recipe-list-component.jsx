@@ -34,13 +34,15 @@ const RecipesList = ({
     const [chosenRecipe, setChosenRecipe] = useState([])
 
     useEffect(() => {
-        const filters = {
-            search: searchFilterValue,
-            sort: sortFilterValue.value,
-            ingredients: ingredientsFilterValue.map(({ value }) => value),
-            categories: categoriesFilterValue.map(({ value }) => value)
+        if (showFilter) {
+            const filters = {
+                search: searchFilterValue,
+                sort: sortFilterValue.value,
+                ingredients: ingredientsFilterValue.map(({ value }) => value),
+                categories: categoriesFilterValue.map(({ value }) => value)
+            }
+            fetchRecipesAction(filters)
         }
-        fetchRecipesAction(filters)
     }, [sortFilterValue, searchFilterValue, ingredientsFilterValue, categoriesFilterValue])
 
 
@@ -76,7 +78,7 @@ const RecipesList = ({
                         <Row>
                             {recipes.length && recipes.map((recipe, index) => {
                                 return (
-                                    <Col key={recipe.image + recipe.description}>
+                                    <Col xs={3} key={recipe.image + recipe.description}>
                                         <Recipe baseUrl={BUCKET_URL} openModal={setChosenRecipe} recipe={recipe} />
                                     </Col>
                                 )
