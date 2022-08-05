@@ -1,5 +1,5 @@
 import actions from "../actions/constants";
-import {spinner} from "../actions/spinner-actions";
+import { spinner } from "../actions/spinner-actions";
 import RecipeClient from "../../api/recipe";
 import IngredientClient from "../../api/ingredient";
 import CategoryClient from "../../api/category";
@@ -14,7 +14,7 @@ export function fetchRecipes(filters) {
             spinner(dispatch, true);
             const response = await recipeClient.fetchRecipes(filters);
             const recipes = response.body || [];
-            dispatch({type: actions.FETCHED_RECIPES, recipes});
+            dispatch({ type: actions.FETCHED_RECIPES, recipes });
         } catch (e) {
             console.error(e)
         }
@@ -28,7 +28,7 @@ export function getAllIngredients() {
             spinner(dispatch, true);
             const response = await ingredientsClient.fetchIngredientsName();
             const ingredients = response.body || [];
-            dispatch({type: actions.FETCHED_INGREDIENTS, ingredients});
+            dispatch({ type: actions.FETCHED_INGREDIENTS, ingredients });
         } catch (e) {
             console.error(e)
         }
@@ -42,7 +42,7 @@ export function getAllCategories() {
             spinner(dispatch, true);
             const response = await categoriesClient.fetchCategories();
             const categories = response.body || [];
-            dispatch({type: actions.FETCHED_CATEGORIES, categories});
+            dispatch({ type: actions.FETCHED_CATEGORIES, categories });
         } catch (e) {
             console.error(e)
         }
@@ -56,7 +56,7 @@ export function fetchRecipesByUserId(userId) {
             spinner(dispatch, true);
             const response = await recipeClient.fetchRecipesByUserId(userId); //Get the user ID
             const recipes = response.body || [];
-            dispatch({type: actions.FETCHED_RECIPES, recipes});
+            dispatch({ type: actions.USER_RECIPES, recipes });
         } catch (e) {
             console.error(e)
         }

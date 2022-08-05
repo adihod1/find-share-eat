@@ -1,5 +1,5 @@
 import ApiBase from "./api";
-import {objectToQuerystring} from "../utils/url-utils";
+import { objectToQuerystring } from "../utils/url-utils";
 
 export default class RecipeClient extends ApiBase {
     constructor() {
@@ -13,10 +13,8 @@ export default class RecipeClient extends ApiBase {
 
     // GET
     async fetchRecipes(filters) {
-        console.log('filters', filters)
 
         const queryString = objectToQuerystring(filters);
-        console.log(queryString)
         try {
             return await this._get(`/get-all-recipes${queryString}`)
         } catch (error) {
