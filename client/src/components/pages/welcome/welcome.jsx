@@ -20,12 +20,12 @@ function Welcome({ isModalOpenValue, openLoginModalAction }) {
             </div>
             <div id="footer">
                 <div>
-                    <img src={Sharing} className="bottom-images" />
-                    <p>Find desired recipes</p>
+                    <img src={Sharing} className="bottom-images"/>
+                    <p className='bottom-text-left'>Find desired recipes</p>
                 </div>
                 <div>
-                    <img src={Find} className="bottom-images" />
-                    <p>Share your own recipes</p>
+                    <img src={Find} className="bottom-images"/>
+                    <p className='bottom-text-right'>Share your own recipes</p>
                 </div>
             </div>
         </div>

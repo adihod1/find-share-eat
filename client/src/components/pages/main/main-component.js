@@ -9,39 +9,41 @@ import Welcome from "../welcome/welcome-connector";
 import Saved from "../saved/saved-connector";
 import Shared from "../shared/shared-connector";
 import { AuthToken } from "../../../utils/token-storage";
-
+import RecipeForm from "../../recipe/recipe-form/form-connector";
 
 function Main({ isLoggedInValue, userLoginAction }) {
-    useEffect(() => {
-        const user = AuthToken.checkForToken()
-        if (user) {
-            userLoginAction(user)
-        }
-    }, [])
+  useEffect(() => {
+    const user = AuthToken.checkForToken();
+    if (user) {
+      userLoginAction(user);
+    }
+  }, []);
 
-    return (
-        <div className="main">
-            <Spinner />
-            <BrowserRouter>
-                {isLoggedInValue ?
-                    <>
-                        <Sidebar />
-                        <div className={'screens'}>
-                            <Routes>
-                                <Route path="/" element={<Home />} />
-                                <Route path="/profile" element={<Profile />} />
-                                <Route path="/saved" element={<Saved />} />
-                                <Route path="/shared" element={<Shared />} />
-                            </Routes>
-                        </div>
-                    </>
-                    :
-                    <Routes>
-                        <Route path="/" element={<Welcome />} />
-                    </Routes>}
-            </BrowserRouter>
-        </div>
-    );
+  return (
+    <div className="main">
+      <Spinner />
+      <BrowserRouter>
+        {isLoggedInValue ? (
+          <>
+            <Sidebar />
+            <div className={"screens"}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/saved" element={<Saved />} />
+                <Route path="/shared" element={<Shared />} />
+                <Route path="/share-recipe" element={<RecipeForm />} />
+              </Routes>
+            </div>
+          </>
+        ) : (
+          <Routes>
+            <Route path="/" element={<Welcome />} />
+          </Routes>
+        )}
+      </BrowserRouter>
+    </div>
+  );
 }
 
 export default Main;
