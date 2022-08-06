@@ -1,5 +1,4 @@
 .sideTitle {
-    // height: 100%;
     position: absolute;
     left: 0;
     width: 100%;
@@ -7,22 +6,6 @@
     width: 338px;
     background-color: #CB4495;
 }
-
-// img {
-//     height: 640px;
-//     width: 640px;
-//     left: 294px;
-//     top: -170px;
-//     border-radius: 0px;
-
-// }
-
-// .app-container {
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     justify-content: center;
-// }
 
 .cupcake-img {
     display: flex;
@@ -35,9 +18,6 @@
 .cupcake-img img{
     height: 400px;
     width: 400px;
-    // left: 294px;
-    // top: -170px;
-    // border-radius: 0px;
     margin-left: 49%;
     margin-top: -99%;
     display: inline-block;
@@ -78,19 +58,16 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    // justify-content: center;
     overflow: hidden;
     margin-left: -27%;
 }
 
 .title {
-    // height: 34px;
     width: 90px;
     color: #ffffff;
     font-family: 'Potta One', Times, serif;
     font-size: 20px;
     font-weight: 400;
-    // line-height: 47px;
     letter-spacing: 0em;
     text-align: -webkit-match-parent;
 }
@@ -102,7 +79,6 @@ h1 {
 
 .column {
     float: left;
-    // width: 47%;
     padding: 10px;
     height: 300px;
 }
@@ -110,7 +86,6 @@ h1 {
 form.center {
     margin-left: 51px;
     margin-top: 82px;
-    /* align-items: center; */
 }
 
 .flex {

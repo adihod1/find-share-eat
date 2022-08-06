@@ -1,5 +1,5 @@
 import cupcakeIcon from "../../../images/cupcakeIcon.png";
-import { useCallback, useState, useEffect } from "react";
+import { useCallback, useState } from "react";
 import ChooseTime from "./time/ChooseTime";
 import Ingredients from "./ingredients/Ingredients";
 import Category from "./category/category-connector";
@@ -15,8 +15,6 @@ export default function RecipeForm({
   addIngredients,
   userIngredients,
   addInstructions,
-  userInstructions,
-  userCookingTime,
   addCookTime,
 }) {
   const [hours, setHours] = useState("00");
@@ -47,7 +45,6 @@ export default function RecipeForm({
     const lengthUrl = fixUrl.length;
     setImageLink(fixUrl[lengthUrl - 1]);
   };
-  console.log("imageee", imageLink);
 
   const userId = userValue.id;
 
@@ -66,11 +63,9 @@ export default function RecipeForm({
   );
 
   const handleFormSubmit = () => {
-    console.log("imageLink", imageLink);
     handleAddIngredients();
     handleAddInstructions();
     handleAddTime();
-    console.log("imageLink2", imageLink);
     addUserRecipe(userId, {
       recipe: {
         recipeName: inputTitle,
@@ -84,7 +79,6 @@ export default function RecipeForm({
     });
     setInputValue("");
   };
-  console.log("inst", userIngredients);
   return (
     <div>
       <form className="column center" onSubmit={handleFormSubmit}>
@@ -125,7 +119,6 @@ export default function RecipeForm({
               fullInstructions={inputInstructions}
             />
             <ChooseTime
-              // handleAddTime={handleAddTime}
               handleAddHours={setHours}
               handleAddMinutes={setMinutes}
               handleAddSeconds={setSeconds}
@@ -133,7 +126,6 @@ export default function RecipeForm({
               fullMinutes={minutes}
               fullSeconds={seconds}
             />
-            {/* <PictureUpload />  */}
             <UploadImageComponent handleImage={handleImageUrl} />
             <input className="send-recipe" type="submit" value="Submit" />
           </div>

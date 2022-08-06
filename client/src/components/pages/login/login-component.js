@@ -1,9 +1,9 @@
 import "./login.scss";
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Modal from 'react-bootstrap/Modal';
-import {GoogleLogin, GoogleOAuthProvider} from '@react-oauth/google';
+import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
 import lizzieImage from '../../../images/lizzieIcon.png'
-import {AuthToken} from "../../../utils/token-storage";
+import { AuthToken } from "../../../utils/token-storage";
 
 const CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID
 
@@ -26,7 +26,7 @@ function Login({ userLoginAction, closeLoginModalAction }) {
     return (
         <Modal show={isModalOpen} onHide={handleClose}>
             <Modal.Header closeButton>
-                <Modal.Title>Modal heading</Modal.Title>
+                <Modal.Title>Log In</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <div className="google-sign-in-button">

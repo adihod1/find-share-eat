@@ -2,15 +2,14 @@ import React from 'react'
 import './sidebar.scss'
 import { Link } from 'react-router-dom';
 import { FaBookmark, FaCloudsmith, FaSignOutAlt, FaUser, FaShareSquare } from "react-icons/fa";
-// import findShareEatLogo from "../../images/findShareEatLogo.png";
-import LOGO from "../../images/LOGO.png";
+import findShareEatLogo from "../../images/LOGO.png";
 import penguinIcon from "../../images/penguinIcon.png";
 
 function Sidebar({ userValue, userLogoutAction }) {
     return (
         <div className="sidebar-container">
             <Link to="/" className="side-bar-logo">
-                <img src={LOGO} />
+                <img src={findShareEatLogo} />
             </Link>
             {userValue && <div className="user-login-details">
                 <img alt="" src={userValue.picture} />

@@ -11,7 +11,6 @@ export function recipeCategory() {
     try {
       spinner(dispatch, true);
       const response = await categoryClient.fetchCategories();
-      console.log("res", response);
       dispatch({ type: actions.GET_CATEGORIES, categories: response.body });
     } catch (e) {
       console.error(e);
@@ -37,7 +36,6 @@ export function addRecipe(userId, recipe) {
     try {
       spinner(dispatch, true);
       const response = await recipeClient.addRecipe(userId, recipe);
-      console.log("create", response);
       dispatch({
         type: actions.CREATE_RECIPE,
         userId: userId,
