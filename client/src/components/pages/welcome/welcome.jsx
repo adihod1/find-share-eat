@@ -14,9 +14,9 @@ function Welcome({ isModalOpenValue, openLoginModalAction }) {
             </div>
             <img src={Logo} className="logo-image" />
             <div id="welcome-text">
-                <p className='center-first-row'>Hungry? Looking for something tasty to eat?</p>
+                <p>Hungry? Looking for something tasty to eat?</p>
                 <p>Find, share and enjoy 1000's of recipes that anyone can make!</p>
-                <p className='center-third-row'>Let the fun begin!</p>
+                <p>Let the fun begin!</p>
             </div>
             <div id="footer">
                 <div>

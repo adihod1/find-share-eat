@@ -1,12 +1,16 @@
 {
   "name": "server",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "main": "src/index.js",
   "bin": "src/index.js",
   "scripts": {
     "start": "node server.js",
+    "nodemon-start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "seq-migrations": "npx sequelize-cli db:migrate"
+    "seq-init": "npm run seq-migrations && npm run seq-seed",
+    "seq-delete": "npx sequelize-cli db:seed:undo:all",
+    "seq-migrations": "npx sequelize-cli db:migrate",
+    "seq-seed": "npx sequelize-cli db:seed:all"
   },
   "nodemonConfig": {
     "ignore": [

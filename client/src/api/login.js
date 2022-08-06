@@ -2,7 +2,7 @@ import ApiBase from "./api";
 
 export default class Login extends ApiBase {
     constructor() {
-        super('http://localhost:3001/auth')
+        super('/auth')
     }
 
     setLoggedIn(user) {

@@ -2,7 +2,7 @@ import ApiBase from "./api";
 
 export default class RecipesApiService extends ApiBase {
   constructor() {
-    super("http://localhost:3001/api");
+    super("/api");
   }
 
   postRecipe(userId, recipe) {
