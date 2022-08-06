@@ -1,10 +1,4 @@
-// const dotenv = require("dotenv");
-// const express = require("express");
-// const errorHandler = require("./server/middleware/error-handling");
-// const cors = require("./server/middleware/cors");
-// const logger = require("./server/middleware/logger");
-
-const dotenv = require("dotenv");
+require("dotenv").config();
 const express = require("express");
 const errorHandler = require("./server/middleware/error-handling");
 const cors = require("./server/middleware/cors");
@@ -14,7 +8,13 @@ const ApiRouter = require("./server/routes/api");
 const AuthRouter = require("./server/routes/api/auth");
 const ImageRouter = require("./server/routes/images");
 
-dotenv.config();
+const path = require('path')
+
+const cwd = process.cwd()
+const packageJsonLocation = path.resolve(cwd, 'package.json')
+
+const APP_NAME = require(packageJsonLocation).name
+const APP_VERSION = require(packageJsonLocation).version
 
 const APP_PORT = process.env.PORT ? parseInt(process.env.PORT) : 3001;
 
@@ -25,6 +25,8 @@ app.use([errorHandler, logger, cors, express.json()]);
 app.use("/api", ApiRouter);
 app.use("/auth", AuthRouter);
 app.use("/images", ImageRouter);
+
+app.get('/healtz', (req, res) => res.status(200).send(`${APP_NAME} v${APP_VERSION} - Healthy`))
 
 process.on("unhandledRejection", (reason, promise) => {
   // console.log("Unhandled Rejection", reason.message);

@@ -1,9 +1,9 @@
 import ApiBase from "./api";
-import { objectToQuerystring } from "../utils/url-utils";
+import {objectToQuerystring} from "../utils/url-utils";
 
 export default class RecipeClient extends ApiBase {
   constructor() {
-    super("http://localhost:3001/api/recipe");
+    super("/api/recipe");
   }
 
   // POST

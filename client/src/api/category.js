@@ -2,7 +2,7 @@ import ApiBase from "./api";
 
 export default class CategoryClient extends ApiBase {
   constructor() {
-    super("http://localhost:3001/api/category");
+    super("/api/category");
   }
 
   // GET

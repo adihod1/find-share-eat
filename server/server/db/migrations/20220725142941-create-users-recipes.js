@@ -1,6 +1,8 @@
 "use strict";
+const {setGlobalDBConfig} = require("../config/helpers");
 module.exports = {
   async up(queryInterface, Sequelize) {
+    await setGlobalDBConfig(queryInterface);
     await queryInterface.createTable("UsersRecipes", {
       id: {
         allowNull: false,
@@ -10,7 +12,7 @@ module.exports = {
       },
       userId: {
         type: Sequelize.INTEGER,
-        references: { model: "Users", key: "id" },
+        references: {model: "Users", key: "id"},
       },
       recipeId: {
         type: Sequelize.INTEGER,
@@ -27,6 +29,7 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
+    await setGlobalDBConfig(queryInterface);
     await queryInterface.dropTable("UsersRecipes");
   },
 };

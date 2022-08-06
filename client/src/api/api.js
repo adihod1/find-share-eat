@@ -1,6 +1,8 @@
+export const BASE_API_URL = process.env.REACT_APP_API_ADDRESS || 'http://localhost:3001'
+
 export default class ApiBase {
-    constructor(address, headers) {
-        this._API_BASE = address;
+    constructor(path, headers) {
+        this._API_BASE = BASE_API_URL + path;
         this._HEADERS = {
             'Accept': 'application/json',
             'Content-Type': 'application/json',

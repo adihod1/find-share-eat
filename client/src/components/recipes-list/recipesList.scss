@@ -38,16 +38,17 @@
     border-color: white;
 }
 
-.ingredient {
-    background-color: rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    border-radius: 5px;
-    padding: 5px;
+.empty-recipe-list {
+    color: #f9c368;
     text-align: center;
-    font-weight: 600;
+    position: fixed;
+    top: 170px;
+    font-size: 30px;
+    font-family: 'Potta One';
 }
 
-.ingridientsContainer {
-    margin-top: 20px;
-    margin-bottom: 10px
+.empty-recipe-list .icon {
+    font-size: 100px;
+    margin: 15px;
+    color: #f9c368;
 }
