@@ -13,7 +13,6 @@ import Category from "./Category";
 const mapStateToProps = (state, ownProps) => {
   const categoriesList = getCategoriesList(state);
   const chosenCategory = getChosenCategory(state);
-  console.log("conncetor", categoriesList);
   return { categoriesList, chosenCategory };
 };
 

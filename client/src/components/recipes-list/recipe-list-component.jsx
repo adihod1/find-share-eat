@@ -33,6 +33,10 @@ const RecipesList = ({
 
     const [chosenRecipe, setChosenRecipe] = useState([])
 
+    const handlePrint = (
+        window.print
+    )
+
     useEffect(() => {
         if (showFilter) {
             const filters = {
@@ -76,6 +80,7 @@ const RecipesList = ({
                             </Container>
                             <h3>Instructions:</h3>
                             <p>{chosenRecipe.instructions}</p>
+                            <button className="button-print-recipe" onClick={handlePrint}>Print recipe</button>
                         </div>
                     </Modal.Body>
                 </Modal>

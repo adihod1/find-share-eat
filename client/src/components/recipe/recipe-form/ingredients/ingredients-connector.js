@@ -12,7 +12,6 @@ const mapStateToProps = (state, ownProps) => {
   const quantityUserInput = getChosenQuantity(state);
   const chosenUserMeasurement = getChosenMeasurement(state);
   const chosenUserIngredient = getChosenIngredient(state);
-  console.log("conncetor", categoriesList);
   return {
     quantityUserInput,
     chosenUserMeasurement,

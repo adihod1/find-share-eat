@@ -14,10 +14,8 @@ export default function Ingredients({
   const [inputMeasurement, setInputMeasurement] = useState("");
   const [inputIngredient, setInputIngredient] = useState("");
 
-  console.log("handle", typeof handleAddIngredients);
   const handleClick = () => {
     const quantity = quantityInput.current.value;
-    const isNumber = !isNaN(Number(quantity));
     const quantityToNumber = parseFloat(quantity);
     const measurement = measurementInput.current.value;
     const ingredient = ingredientInput.current.value;
@@ -48,7 +46,6 @@ export default function Ingredients({
     const stringToArr = procedure.split(" ");
     const [amount, measurement, ingredientName] = stringToArr;
     const stringToObject = { amount, measurement, ingredientName };
-    console.log(stringToObject);
     handleAddIngredients((current) =>
       current.filter((fullIngredient) => {
         return (
@@ -59,9 +56,6 @@ export default function Ingredients({
       })
     );
   };
-
-  console.log("full", fullIngredientDetails);
-  console.log("pro", procedures);
 
   return (
     <>

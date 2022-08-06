@@ -23,8 +23,6 @@ export default function Instructions({
                     placeholder="Add two spoons of sugar..."
                     ref={textInput}
                     value={fullInstructions}
-                    // onSubmit={handleAddInstructions}
-                    // onChange={onInputInstructionsChange}
                     onChange={(e) => handleAddFullInstructions(e.target.value)}
                   />
                 </div>
