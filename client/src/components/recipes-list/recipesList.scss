@@ -32,8 +32,22 @@
     width: 100%;
 }
 
-.button-print-recipe{
+.button-print-recipe {
     border-radius: 20px;
     background-color: #BC2680;
     border-color: white;
+}
+
+.ingredient {
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.ingridientsContainer {
+    margin-top: 20px;
+    margin-bottom: 10px
 }
