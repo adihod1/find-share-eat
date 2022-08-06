@@ -19,20 +19,23 @@ function Recipe({
   // const [removeLike, setremoveLike] = useState([]);
 
   const likedRecipe = () => {
-    if (recipe.Likes.length > 0 && recipe.Likes.find(like => like.recipeId === recipe.recipeId))
-    return true;
-    else return false;
+    if (recipe.Likes.length > 0 && recipe.Likes.find(like => like.recipeId === recipe.id) && recipe.Likes.find(like => like.userId === userId))
+    {return true;
+  } else {
+    console.log('ee',recipe.Likes.find(like => console.log(like.recipeId)))
+    console.log("re", recipe.recipeId)
+    return false;}
   }
 
-  const handleAddLike = () => {
+  const handleAddLike = (recipeId) => {
     addLikeToRecipe(userId, {
-      recipeId: recipe.recipeId,
+      recipeId: recipeId,
     });
   }
 
-  const handleRemoveLike = () => {
+  const handleRemoveLike = (recipeId) => {
     removeLikeToRecipe(userId, {
-      recipeId: recipe.recipeId,
+      recipeId: recipeId,
     });
   }
 
@@ -42,24 +45,6 @@ function Recipe({
   const [likeImage, setLikeImage] = useState(false);
 
   const userId = userValue.id;
-
-      {/* {likedRecipe() ? (
-            <img
-            key="like"
-            className="icon"
-            alt="like"
-            src={likeIcon}
-            // onClick = {handleRemoveLike(recipe.id)}
-          ></img>
-          ) : (
-            <img
-            key="like"
-            className="icon-blue"
-            alt="like"
-            src={likeIcon}
-            // onClick = {handleAddLike(recipe.id)}
-          ></img>
-          )} */}
 
   const handleLikeClick = (recipeId) => {
     console.log("add like");
@@ -77,6 +62,7 @@ function Recipe({
     setIsClicked(!isClicked);
   };
 
+
   return (
     <div className={"recipe-container"}>
       <img
@@ -92,9 +78,26 @@ function Recipe({
           {`${recipe.cookingTime}`}
         </div>
         <div className={"recipe-buttons-container"}>
-          <img className="icon" alt="favorite" src={FavoriteIcon}></img>
+          {/* <img className="icon" alt="favorite" src={FavoriteIcon}></img> */}
           <p>{recipe.numberOfLikes}</p>
-          {recipe.Likes.length > 0 ? (
+             {likedRecipe() ? (
+            <img
+            key="like"
+            className="icon-blue"
+            alt="like"
+            src={likeIcon}
+            // onClick = {handleRemoveLike(recipe.id)}
+          ></img>
+          ) : (
+            <img
+            key="like"
+            className="icon"
+            alt="like"
+            src={likeIcon}
+            // onClick = {handleAddLike(recipe.id)}
+          ></img>
+          )} 
+          {/* {recipe.Likes.length > 0 ? (
             recipe.Likes.map((like) =>
               like.userId == userId ? (
                 <img
@@ -114,7 +117,7 @@ function Recipe({
             )
           ) : (
             <img key="unlike" className="icon" alt="like" src={likeIcon}></img>
-          )}
+          )} */}
         </div>
       </div>
     </div>

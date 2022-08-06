@@ -13,6 +13,9 @@ export default class LikeClient extends ApiBase {
 
   // DELETE
   async removeLike(userId, recipeId) {
-    return await this._delete(`/delete-like/${userId}`, recipeId);
+    return await this._delete(
+      `/delete-like/${userId}`,
+      JSON.stringify(recipeId)
+    );
   }
 }

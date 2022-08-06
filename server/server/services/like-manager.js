@@ -28,7 +28,6 @@ class LikeManager {
       { numberOfLikes: numberOfLikes },
       { where: { id: recipeId } }
     );
-    // recipe.countLike()
   };
 }
 

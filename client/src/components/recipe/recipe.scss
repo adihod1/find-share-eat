@@ -39,11 +39,13 @@
 .recipe-title {
     margin: 10px;
     font-weight: bold;
+    text-align: center;
 }
 
 .recipe-buttons-container {
     display: flex;
-    gap: 20px
+    gap: 7px;
+    margin-top: 18px;
 }
 
 .icon-blue {
