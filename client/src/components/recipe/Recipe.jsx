@@ -17,21 +17,59 @@ function Recipe({
 }) {
   // const [addLike, setaddLike] = useState([]);
   // const [removeLike, setremoveLike] = useState([]);
-  const [likes, setLikes] = useState(0);
+
+  const likedRecipe = () => {
+    if (recipe.Likes.length > 0 && recipe.Likes.find(like => like.recipeId === recipe.recipeId))
+    return true;
+    else return false;
+  }
+
+  const handleAddLike = () => {
+    addLikeToRecipe(userId, {
+      recipeId: recipe.recipeId,
+    });
+  }
+
+  const handleRemoveLike = () => {
+    removeLikeToRecipe(userId, {
+      recipeId: recipe.recipeId,
+    });
+  }
+
+  
+  const [likes, setLikes] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
   const [likeImage, setLikeImage] = useState(false);
 
   const userId = userValue.id;
 
+      {/* {likedRecipe() ? (
+            <img
+            key="like"
+            className="icon"
+            alt="like"
+            src={likeIcon}
+            // onClick = {handleRemoveLike(recipe.id)}
+          ></img>
+          ) : (
+            <img
+            key="like"
+            className="icon-blue"
+            alt="like"
+            src={likeIcon}
+            // onClick = {handleAddLike(recipe.id)}
+          ></img>
+          )} */}
+
   const handleLikeClick = (recipeId) => {
     console.log("add like");
     if (isClicked) {
-      setLikes(likes - 1);
+    setLikes(likes.pop(recipeId));
       removeLikeToRecipe(userId, {
-        recipeId: "inputTitle",
+        recipeId: recipeId,
       });
     } else {
-      setLikes(likes + 1);
+      setLikes(likes.concat(recipeId));
       addLikeToRecipe(userId, {
         recipeId: recipeId,
       });
