@@ -8,7 +8,7 @@ const {
   sequelize,
 } = require("../db/models");
 
-const Op = require("Sequelize").Op;
+const Op = require("sequelize").Op;
 
 class RecipeManager {
   addRecipe = async (id, data) => {
