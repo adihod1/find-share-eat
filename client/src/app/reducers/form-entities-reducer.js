@@ -20,7 +20,6 @@ const formEntitiesReducer = (state = initialState, action) => {
       return { ...state, recipeList: recipeInput };
 
     case actions.ADD_INGREDIENTS:
-      console.log("state", action);
       return {
         ...state,
         ingredients: action.ingredients,
@@ -38,7 +37,6 @@ const formEntitiesReducer = (state = initialState, action) => {
       };
 
     case actions.ADD_CATEGORY:
-      console.log("state", action);
       return {
         ...state,
         category: action.category,

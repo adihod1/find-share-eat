@@ -67,11 +67,17 @@ const RecipesList = ({
                             <p className={'modal-description'}>{chosenRecipe.description}</p>
                             <p>{`Cooking time: ${chosenRecipe.cookingTime}`}</p>
                             <h3>Ingridients:</h3>
-                            {chosenRecipe?.Ingridients?.map(ingridient => {
-                                return (
-                                    <p>{ingridient}</p>
-                                )
-                            })}
+                            <Container className={'ingridientsContainer'}>
+                                <Row>
+                                    {chosenRecipe?.Ingredients?.map(ingridient => {
+                                        return (
+                                            <Col xs={4} key={ingridient.ingredientName}>
+                                                <p className={"ingredient"}>{ingridient.ingredientName.charAt(0).toUpperCase() + ingridient.ingredientName.slice(1)}</p>
+                                            </Col>
+                                        )
+                                    })}
+                                </Row>
+                            </Container>
                             <h3>Instructions:</h3>
                             <p>{chosenRecipe.instructions}</p>
                             <button className="button-print-recipe" onClick={handlePrint}>Print recipe</button>

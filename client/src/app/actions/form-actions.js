@@ -11,28 +11,24 @@ export const addUserRecipe = (id, recipe) => {
 
 export const addIngredients = (ingredients) => {
   return (dispatch) => {
-    console.log("actionINGREDIENT", ingredients);
     dispatch({ type: actions.ADD_INGREDIENTS, ingredients });
   };
 };
 
 export const addInstructions = (instructions) => {
   return (dispatch) => {
-    console.log("actionINSTRUCTUONS", instructions);
     dispatch({ type: actions.ADD_INSTRUCTIONS, instructions });
   };
 };
 
 export const addCookTime = (cookTime) => {
   return (dispatch) => {
-    console.log("actionCOOKTIME", cookTime);
     dispatch({ type: actions.ADD_COOK_TIME, cookTime });
   };
 };
 
 export const addCategory = (category) => {
   return (dispatch) => {
-    console.log("actionCategory", category);
     dispatch({ type: actions.ADD_CATEGORY, category });
   };
 };
