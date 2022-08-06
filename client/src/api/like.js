@@ -8,7 +8,7 @@ export default class LikeClient extends ApiBase {
 
   // POST
   async addLike(userId, recipeId) {
-    await this._post(`/add-like/${userId}`, recipeId);
+    await this._post(`/add-like/${userId}`, JSON.stringify(recipeId));
   }
 
   // DELETE
