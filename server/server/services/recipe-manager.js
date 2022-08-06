@@ -71,7 +71,11 @@ class RecipeManager {
 
     try {
       const recipes = await Recipe.findAll({
-        include: [{ model: Ingredient }, { model: Category }],
+        include: [
+          { model: Ingredient },
+          { model: Category },
+          { model: Like, as: "Likes" },
+        ],
         ...options,
       });
       return recipes;
