@@ -21,7 +21,6 @@ const UploadImage = ({handleImage}) => {
       body: formData,
     });
     const responseWithBody = await response.json();
-    console.log("resss", responseWithBody);
     if (response) handleImage(responseWithBody.url);
   };
 

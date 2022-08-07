@@ -3,6 +3,7 @@ const {
   Recipe,
   Ingredient,
   UsersRecipes,
+  Like,
   Category,
   sequelize,
 } = require("../db/models");
@@ -22,6 +23,14 @@ class RecipeManager {
     await recipe.addUser(userRow, { through: UsersRecipes });
   };
 
+  // getAllRecipes = async () => {
+  //   const recipes = await Recipe.findAll({
+  //     include: [
+  //       { model: Ingredient, as: "Ingredients" },
+  //       { model: Like, as: "Likes" },
+  //     ],
+  //   });
+  //   return recipes;
   getAllRecipes = async (filters) => {
     const options = {};
 
@@ -62,7 +71,11 @@ class RecipeManager {
 
     try {
       const recipes = await Recipe.findAll({
-        include: [{ model: Ingredient }, { model: Category }],
+        include: [
+          { model: Ingredient },
+          { model: Category },
+          { model: Like, as: "Likes" },
+        ],
         ...options,
       });
       return recipes;

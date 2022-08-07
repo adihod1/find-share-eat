@@ -59,6 +59,11 @@ const actions = {
   CLOSE_MODAL: "CLOSE_MODAL",
   // RECIPE
   FETCHED_RECIPES: "FETCHED_RECIPES",
+
+  //LIKE
+
+  ADD_LIKE: "ADD_LIKE",
+  REMOVE_LIKE: "REMOVE_LIKE",
 };
 
 export default actions;

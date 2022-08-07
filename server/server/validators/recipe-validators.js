@@ -41,6 +41,10 @@ const recipeValidator = validateSchema({
     errorMessage: `Missing/Bad ingredients`,
     in: ["body"],
   },
+  //   NumberOfLikes: {
+  //     isInt: true,
+  //     errorMessage: `Missing/Bad ingredients`,
+  //   },
 });
 
 const recipeIdValidator = validateSchema({
