@@ -18,7 +18,7 @@ function Recipe({
   const [ like, SetLike] = useState(0)
 
   const likedRecipe = () => {
-    if (recipe.Likes.length > 0 && recipe.Likes.find(like => like.recipeId === recipe.id) && recipe.Likes.find(like => like.userId === userId))
+    if (recipe.Likes && recipe.Likes.find(like => like.recipeId === recipe.id) && recipe.Likes.find(like => like.userId === userId))
     {return true;
   } else {
     return false;}
