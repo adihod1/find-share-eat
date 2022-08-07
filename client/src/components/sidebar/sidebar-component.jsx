@@ -22,12 +22,6 @@ function Sidebar({ userValue, userLogoutAction }) {
                         <p className="nav-item-text">Profile</p>
                     </div>
                 </Link>
-                <Link to="/saved" className='link'>
-                    <div className='nav-bar-item'>
-                        <FaBookmark className="logo" />
-                        <p className="nav-item-text">Saved Recipes</p>
-                    </div>
-                </Link>
                 <Link to="/share-recipe" className='link'>
                     <div className='nav-bar-item'>
                         <FaShareSquare className="logo" />
