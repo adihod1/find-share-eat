@@ -6,7 +6,6 @@ import Home from "../home/home-connector";
 import Sidebar from "../../sidebar/sidebar-connector";
 import Spinner from "../../spinner/spinner-connector";
 import Welcome from "../welcome/welcome-connector";
-import Saved from "../saved/saved-connector";
 import Shared from "../shared/shared-connector";
 import { AuthToken } from "../../../utils/token-storage";
 import RecipeForm from "../../recipe/recipe-form/form-connector";
@@ -30,7 +29,6 @@ function Main({ isLoggedInValue, userLoginAction }) {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/profile" element={<Profile />} />
-                <Route path="/saved" element={<Saved />} />
                 <Route path="/shared" element={<Shared />} />
                 <Route path="/share-recipe" element={<RecipeForm />} />
               </Routes>
