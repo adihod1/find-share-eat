@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./recipe.scss";
 import clockIcon from "../../images/timeIcon.png";
-import FavoriteIcon from "../../images/saveToProfileIcon.png";
+import like from "../../images/like.png"
 import likeIcon from "../../images/likeIcon.png";
 
 const DEFAULT_IMAGE =
@@ -15,7 +15,6 @@ function Recipe({
   removeLikeToRecipe,
   userValue,
 }) {
-  const [ like, SetLike] = useState(0)
 
   const likedRecipe = () => {
     if (recipe.Likes && recipe.Likes.find(like => like.recipeId === recipe.id) && recipe.Likes.find(like => like.userId === userId))
@@ -59,7 +58,7 @@ function Recipe({
             key="like"
             className="icon-blue"
             alt="like"
-            src={likeIcon}
+            src={like}
             onClick = {() => {handleRemoveLike(recipe.id)}}
           ></img>
           ) : (
