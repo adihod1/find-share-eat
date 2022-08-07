@@ -1,15 +1,24 @@
 const { Like, Recipe } = require("../db/models");
 const recipe = require("../db/models/recipe");
 
+const { Op } = require("sequelize");
 class LikeManager {
   addLike = async (id, data) => {
     await Like.create({ recipeId: data.recipeId, userId: id });
-    this.getNumberOfLikesByRecipe(data.recipeId);
+    await this.getNumberOfLikesByRecipe(data.recipeId);
+    return {};
   };
 
   deleteLike = async (id, data) => {
-    await Like.destroy({ where: { userId: id } });
-    this.getNumberOfLikesByRecipe(data.recipeId);
+    console.log("dataaa", data);
+    await Like.destroy({
+      where: {
+        [Op.and]: [{ userId: id }, { recipeId: data.recipeId }],
+      },
+    });
+    // await Like.destroy({ likes });
+    await this.getNumberOfLikesByRecipe(data.recipeId);
+    return {};
   };
 
   checkIfUserLiked = async (userId) => {

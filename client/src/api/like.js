@@ -3,12 +3,13 @@ import { objectToQuerystring } from "../utils/url-utils";
 
 export default class LikeClient extends ApiBase {
   constructor() {
-    super("http://localhost:3001/api/like");
+    super("/api/like");
   }
 
   // POST
   async addLike(userId, recipeId) {
-    await this._post(`/add-like/${userId}`, JSON.stringify(recipeId));
+    console.log("post", userId, recipeId);
+    return await this._post(`/add-like/${userId}`, JSON.stringify(recipeId));
   }
 
   // DELETE
