@@ -16,8 +16,6 @@ function Recipe({
   userValue,
 }) {
   const [ like, SetLike] = useState(0)
-  const [ likeClassName, setLikeClassName] = useState("icon-blue")
-  const [ unLikeClassName, setUnLikeClassName] = useState("icon")
 
   const likedRecipe = () => {
     if (recipe.Likes.length > 0 && recipe.Likes.find(like => like.recipeId === recipe.id) && recipe.Likes.find(like => like.userId === userId))
@@ -27,20 +25,15 @@ function Recipe({
   }
 
   const handleAddLike = async(recipeId) => {
-    console.log('add likeee')
     await addLikeToRecipe(userId, {
       recipeId: recipeId,
     });
-    // SetLike(like + 1)
-    // setUnLikeClassName("icon-blue")
   }
 
   const handleRemoveLike = async(recipeId) => {
     await removeLikeToRecipe(userId, {
       recipeId: recipeId,
     });
-    // SetLike(like + -1)
-    // setLikeClassName("icon")
   }
 
   const userId = userValue.id;
@@ -60,7 +53,7 @@ function Recipe({
           {`${recipe.cookingTime}`}
         </div>
         <div className={"recipe-buttons-container"}>
-          <p>{recipe.numberOfLikes+like}</p>
+          <p>{recipe.numberOfLikes}</p>
              {likedRecipe() ? (
             <img
             key="like"

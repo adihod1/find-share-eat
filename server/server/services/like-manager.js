@@ -10,13 +10,11 @@ class LikeManager {
   };
 
   deleteLike = async (id, data) => {
-    console.log("dataaa", data);
     await Like.destroy({
       where: {
         [Op.and]: [{ userId: id }, { recipeId: data.recipeId }],
       },
     });
-    // await Like.destroy({ likes });
     await this.getNumberOfLikesByRecipe(data.recipeId);
     return {};
   };

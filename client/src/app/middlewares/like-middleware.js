@@ -24,7 +24,6 @@ export function removeUserLike(userId, recipeId) {
     try {
       spinner(dispatch, true);
       const response = await likeClient.removeLike(userId, recipeId);
-      console.log("create", response, userId, recipeId);
       dispatch(fetchRecipesAction());
     } catch (e) {
       console.error(e);
