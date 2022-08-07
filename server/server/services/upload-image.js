@@ -1,8 +1,9 @@
 const processFile = require("../middleware/upload");
 const { format } = require("util");
-const { Storage } = require("@google-cloud/storage");
+const {Storage} = require("@google-cloud/storage");
+const {base64Decode} = require("../../utils/base64");
 // Instantiate a storage client with credentials
-const storage = new Storage({ keyFilename: "google-cloud-key.json" });
+const storage = new Storage({credentials: JSON.parse(base64Decode(process.env.GOOGLE_CLOUD_CONFIG))});
 const bucket = storage.bucket("findshareeat");
 
 
@@ -35,7 +36,7 @@ const upload = async (req, res) => {
         blobStream.end(req.file.buffer);
     } catch (err) {
         res.status(500).send({
-            message: `Could not upload the file: ${name}. ${err}`,
+            message: `Could not upload the file - ${err}`,
         });
     }
 };

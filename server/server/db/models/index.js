@@ -26,12 +26,15 @@ fs
   });
 
 Object.keys(db).forEach(modelName => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
-  }
+    if (db[modelName].associate) {
+        db[modelName].associate(db);
+    }
 });
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+
+sequelize.query('SET auto_increment_offset = 4;')
+sequelize.query('SET auto_increment_increment = 10;')
 
 module.exports = db;

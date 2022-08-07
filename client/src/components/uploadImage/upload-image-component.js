@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
+import {BASE_API_URL} from "../../api/api";
 
-const UploadImage = ({ handleImage }) => {
+const UploadImage = ({handleImage}) => {
   const [file, setFile] = useState(null);
 
   const handleFileChange = (e) => {
@@ -15,7 +16,7 @@ const UploadImage = ({ handleImage }) => {
     e.preventDefault();
     let formData = new FormData();
     formData.append("file", file.data);
-    const response = await fetch("http://localhost:3001/images/upload-image", {
+    const response = await fetch(`${BASE_API_URL}/images/upload-image`, {
       method: "POST",
       body: formData,
     });
